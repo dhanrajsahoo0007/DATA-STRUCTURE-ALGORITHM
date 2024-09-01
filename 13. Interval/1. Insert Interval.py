@@ -17,6 +17,7 @@ Explanation:
 
     res = []: Initialize an empty list to store the result.
     for i in range(len(intervals)):: Iterate through each interval in the input list.
+    
     Case 1: if newInterval[1] < intervals[i][0]:
         This checks if the new interval ends before the current interval starts.
         If true, it means we've found the correct position to insert the new interval.
