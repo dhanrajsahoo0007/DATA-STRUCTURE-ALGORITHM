@@ -30,25 +30,21 @@ Space Complexity: O(nW) - We use a 2D array of size (n+1) x (W+1).
 
 
 def knapsack(W, wt, val, n):
-
-    ## create a matrix of size K[n+1][W+1] as these variables are changing 
+    # Create a matrix of size K[n+1][W+1] as these variables are changing 
     # Initialize a table with 0's
-    K = [[0 for x in range(W + 1)] for x in range(n + 1)]
-
-    print(K)
+    K = [[0 for _ in range(W + 1)] for _ in range(n + 1)]
     
-    # Build table K[][] in bottom up manner
+    # Build table K[][] in bottom-up manner
     for i in range(n + 1):
-        for w in range(W + 1):
-            if i == 0 or w == 0:
-                K[i][w] = 0
-            elif wt[i-1] <= w:
-                K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]],  K[i-1][w])
+        for j in range(W + 1):
+            if i == 0 or j == 0:
+                K[i][j] = 0
+            elif wt[i-1] <= j:
+                K[i][j] = max(val[i-1] + K[i-1][j-wt[i-1]],  K[i-1][j])
             else:
-                K[i][w] = K[i-1][w]
+                K[i][j] = K[i-1][j]
     
     return K[n][W]
-
 
 # Example usage
 val = [60, 100, 120]

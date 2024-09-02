@@ -73,15 +73,11 @@ Explanation:
 Time Complexity: O(n log n) due to sorting
 Space Complexity: O(n) for storing sorted arrays
 """
-class Solution:
-    """
-    @param intervals: an array of meeting time intervals
-    @return: the minimum number of conference rooms required
-    """
-    def minMeetingRooms(self, intervals):
+class AlternativeSolution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         # Sort start times and end times separately
-        start = sorted([i.start for i in intervals])
-        end = sorted([i.end for i in intervals])
+        start = sorted(interval[0] for interval in intervals)
+        end = sorted(interval[1] for interval in intervals)
 
         res, count = 0, 0
         s, e = 0, 0
@@ -102,10 +98,13 @@ class Solution:
 # Test cases
 def run_test_case(intervals, case_number):
     solution = Solution()
+    alt_solution = AlternativeSolution()
     result = solution.minMeetingRooms(intervals)
+    alt_result = alt_solution.minMeetingRooms(intervals)
     print(f"Test case {case_number}:")
     print(f"Input: {intervals}")
-    print(f"Output: {result}")
+    print(f"Output (Heap solution): {result}")
+    print(f"Output (Two-pointer solution): {alt_result}")
     print(f"Explanation: Minimum number of days required: {result}\n")
 
 # Run the tests

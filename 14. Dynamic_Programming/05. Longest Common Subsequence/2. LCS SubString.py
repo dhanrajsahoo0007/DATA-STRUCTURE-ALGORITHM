@@ -14,7 +14,7 @@ class Solution:
         # Create a DP table of size (m+1) x (n+1) initialized with 0
         t = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
 
-        max_length = 0
+        # max_length = 0
         
         # Fill the DP table
         for i in range(1, m + 1):

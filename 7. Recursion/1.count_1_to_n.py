@@ -19,7 +19,7 @@ def print_n_to_1(n):
 
 # Test the function
 n = 10
-print(f"Printing numbers from {n} to 1:")
+print(f"Printing numbers from  1 to {n}:")
 print_n_to_1(n)
 print()
 

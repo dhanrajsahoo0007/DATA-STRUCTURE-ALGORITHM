@@ -25,7 +25,7 @@ Space Complexity: O(1)
 We use only a constant amount of extra space (two variables) regardless of the input size.
 
 """
-
+from typing import List
 
 class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
