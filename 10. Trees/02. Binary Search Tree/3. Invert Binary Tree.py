@@ -23,7 +23,7 @@ Detailed Explanation
 
 Diagrams
 Original Tree:
-          4
+           4
          /   \
          2     7
         / \     / \
