@@ -1,12 +1,4 @@
 """
-Topological sort can only be done in a Directed Acyclic graph 
-so if we can't have a topological sort for a graph then it is a cylic graph 
-check the node count after the 
-
-"""
-
-
-"""
 Problem: Detect Cycle in Directed Graph using Kahn's Algorithm
 
 Given a directed graph, detect if there is a cycle in the graph using Kahn's Algorithm.
@@ -26,6 +18,12 @@ Returns:
 Constraints:    1 ≤ V, E ≤ 10^4
 """
 
+"""
+    Topological sort can only be done in a Directed Acyclic graph 
+    so if we can't have a topological sort for a graph then it is a cyclic graph 
+    check the node count after the 
+
+"""
 from typing import List
 from collections import deque
 

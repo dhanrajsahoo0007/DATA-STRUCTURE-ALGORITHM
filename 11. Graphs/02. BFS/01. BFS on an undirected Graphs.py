@@ -34,7 +34,6 @@ def BFS(adj: List[List[int]], u: int, visited: List[bool], result: List[int]):
     while queue:
         u = queue.popleft()
         result.append(u)
-        
         for v in adj[u]:
             if not visited[v]:
                 visited[v] = True

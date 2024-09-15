@@ -32,14 +32,14 @@ def DFS(adj: List[List[int]], u: int, visited: List[bool], in_recursion: List[bo
     in_recursion[u] = True
     
     for v in adj[u]:
-        # If not vistied then we check the cycle in DFS
+        # If not visited then we check the cycle in DFS
         if not visited[v]:
             if DFS(adj, v, visited, in_recursion):
                 return True
-        ## if visited and also present in the current recusion stack then the graph has a cycle 
+        ## if visited and also present in the current recursion stack then the graph has a cycle 
         elif in_recursion[v]:
             return True
-    # as the DFS completed the revind the current recursion 
+    # as the DFS completed the rewind the current recursion 
     in_recursion[u] = False
     return False
 

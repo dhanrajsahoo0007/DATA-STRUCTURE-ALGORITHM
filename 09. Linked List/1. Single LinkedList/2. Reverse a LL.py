@@ -40,6 +40,7 @@ class Solution:
            - Move prev and current one step forward.
         3. Return prev as the new head of the reversed list.
 
+    
         """
         prev = None
         current = head

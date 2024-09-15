@@ -30,6 +30,7 @@ def create_graph(V: int, edges: List[List[int]]) -> List[List[int]]:
 def topological_sort_kahn(V: int, adj: List[List[int]]) -> List[int]:
     # Calculate in-degree for each vertex
     # for ex: in_degree = [1,0,3,2,1]
+    print(f"Printing adjacency list {adj}")
     in_degree = [0] * V
     for u in range(V):
         for v in adj[u]:

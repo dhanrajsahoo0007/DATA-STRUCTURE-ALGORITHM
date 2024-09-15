@@ -27,14 +27,14 @@ def create_graph(V: int, edges: List[List[int]]) -> List[List[int]]:
         adj[u].append(v)
     return adj
 
-def dfs(v: int, adj: List[List[int]], visited: List[bool], stack: List[int]) -> None:
-    visited[v] = True
+def dfs(u: int, adj: List[List[int]], visited: List[bool], stack: List[int]) -> None:
+    visited[u] = True
     
-    for neighbor in adj[v]:
-        if not visited[neighbor]:
-            dfs(neighbor, adj, visited, stack)
+    for v in adj[u]:
+        if not visited[v]:
+            dfs(v, adj, visited, stack)
     
-    stack.append(v)
+    stack.append(u)
 
 def topological_sort_dfs(V: int, adj: List[List[int]]) -> List[int]:
     visited = [False] * V

@@ -24,9 +24,11 @@ from typing import List
 
 def create_graph(V: int, edges: List[List[int]]) -> List[List[int]]:
     adj = [[] for _ in range(V)]
+    print(adj)
     for u, v in edges:
         adj[u].append(v)
         adj[v].append(u)  # Since it's an undirected graph
+        print(adj)
     return adj
 
 def DFS(adj, u, visited, result):
@@ -43,6 +45,21 @@ def dfsOfGraph(V: int, adj: List[List[int]]) -> List[int]:
     result = []
     DFS(adj, 0, visited, result)
     return result
+
+# def dfsOfGraph(V: int, adj: List[List[int]]) -> List[int]:
+#     def dfs_internal(u: int):
+#         if visited[u]:
+#             return
+#         visited[u] = True
+#         result.append(u)
+#         for v in adj[u]:
+#             if not visited[v]:
+#                 dfs_internal(v)
+
+#     visited = [False] * V
+#     result = []
+#     dfs_internal(0)  # Start DFS from vertex 0
+#     return result
 
 # Example usage and testing
 def test_dfs():

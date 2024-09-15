@@ -46,7 +46,6 @@ def DFS(adj: List[List[int]], u: int, parent: int, visited: List[bool]) -> bool:
 def isCycle(V: int, adj: List[List[int]]) -> bool:
     visited = [False] * V
     
-
     ## Here use are using for loop for the case where there are more than 1 graphs that are not connected.
     for i in range(V):
         if not visited[i]:
