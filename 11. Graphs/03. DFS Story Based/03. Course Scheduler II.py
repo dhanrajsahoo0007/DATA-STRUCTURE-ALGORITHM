@@ -56,7 +56,7 @@ class Solution:
     def __init__(self):
         self.hasCycle = False
 
-    def DFS(self, adj: defaultdict(list), u: int, visited: List[bool], st: List[int], inRecursion: List[bool]):
+    def DFS(self, adj, u: int, visited: List[bool], st: List[int], inRecursion: List[bool]):
         visited[u] = True
         inRecursion[u] = True
 

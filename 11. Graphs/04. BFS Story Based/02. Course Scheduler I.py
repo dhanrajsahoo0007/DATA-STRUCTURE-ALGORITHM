@@ -21,7 +21,7 @@ from typing import List
 from collections import defaultdict, deque
 
 class Solution:
-    def topologicalSortCheck(self, adj: defaultdict(list), n: int, indegree: List[int]) -> bool:
+    def topologicalSortCheck(self, adj, n: int, indegree: List[int]) -> bool:
         que = deque()
         count = 0
         
