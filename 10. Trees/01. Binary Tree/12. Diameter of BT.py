@@ -1,22 +1,4 @@
-"""
-Diameter of Binary Tree
-
-Problem Statement:
-    Given the root of a binary tree, return the length of the diameter of the tree.
-    
-Explanation:
-    1. We use a depth-first search (DFS) approach to traverse the tree.
-    2. For each node, we calculate:
-    a) The height of its left subtree
-    b) The height of its right subtree
-    3. The potential diameter through this node is the sum of these heights.
-    4. We keep track of the maximum diameter seen so far.
-    5. We return the height of the current subtree to the parent call.
-
-Time Complexity: O(n), where n is the number of nodes in the tree. We visit each node exactly once.
-Space Complexity: O(h), where h is the height of the tree. This is due to the recursion stack. In the worst case of a skewed tree, it can be O(n).
-
-"""
+from collections import deque
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -25,83 +7,63 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def diameterOfBinaryTree(self, root: TreeNode) -> int:
-        self.diameter = 0
+    def diameter_bfs(self, root):
+        if not root:
+            return 0
         
-        def dfs(node):
-            if not node:
-                return 0
+        max_diameter = 0
+        queue = deque([root])
+        
+        while queue:
+            node = queue.popleft()
             
-            left_height = dfs(node.left)
-            right_height = dfs(node.right)
+            left_height = self.get_height(node.left)
+            right_height = self.get_height(node.right)
             
-            # Update the diameter if the path through this node is longer
-            self.diameter = max(self.diameter, left_height + right_height)
+            max_diameter = max(max_diameter, left_height + right_height)
             
-            # Return the longest path starting from this node
-            return max(left_height, right_height) + 1
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
         
-        dfs(root)
-        return self.diameter
+        return max_diameter
 
+    def get_height(self, node):
+        if not node:
+            return 0
+        return 1 + max(self.get_height(node.left), self.get_height(node.right))
 
+    def diameter_dfs(self, root):
+        # In Python, integers are immutable objects. When you pass an integer to a function and try to modify it, you're actually creating a new integer object.
+        # Which doesn't affect the original value outside the function.
+        # Lists, on the other hand, are mutable objects. 
+        # When you pass a list to a function and modify its contents, the changes are reflected in the original list.
+        diameter = [0]
+        self.height(root, diameter)
+        return diameter[0]
 
-# Helper function to create a binary tree from a list
-def create_tree(values):
-    if not values:
-        return None
-    
-    root = TreeNode(values[0])
-    queue = [root]
-    i = 1
-    
-    while queue and i < len(values):
-        node = queue.pop(0)
-        
-        if i < len(values) and values[i] is not None:
-            node.left = TreeNode(values[i])
-            queue.append(node.left)
-        i += 1
-        
-        if i < len(values) and values[i] is not None:
-            node.right = TreeNode(values[i])
-            queue.append(node.right)
-        i += 1
-    
-    return root
+    # Function to calculate the height of the tree and update the diameter
+    def height(self, node, diameter):
+        if not node:
+            return 0
+
+        # Recursively calculate the height of left and right subtrees
+        lh = self.height(node.left, diameter)
+        rh = self.height(node.right, diameter)
+
+        diameter[0] = max(diameter[0], lh + rh)
+
+        # Return the height of the current node's subtree
+        return 1 + max(lh, rh)
 
 # Example usage
-if __name__ == "__main__":
-    solution = Solution()
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
 
-    # Example 1: [1,2,3,4,5]
-    #     1
-    #    / \
-    #   2   3
-    #  / \
-    # 4   5
-    root1 = create_tree([1,2,3,4,5])
-    print("Example 1:")
-    print("Diameter:", solution.diameterOfBinaryTree(root1))  # Expected output: 3
-
-    # Example 2: [1,2]
-    #     1
-    #    /
-    #   2
-    root2 = create_tree([1,2])
-    print("\nExample 2:")
-    print("Diameter:", solution.diameterOfBinaryTree(root2))  # Expected output: 1
-
-    # Example 3: [1,2,3,4,5,None,None,8,9,None,None,11,12]
-    #        1
-    #       / \
-    #      2   3
-    #     / \
-    #    4   5
-    #   / \   \
-    #  8   9   11
-    #           \
-    #           12
-    root3 = create_tree([1,2,3,4,5,None,None,8,9,None,None,11,12])
-    print("\nExample 3:")
-    print("Diameter:", solution.diameterOfBinaryTree(root3))  # Expected output: 6
+solution = Solution()
+print("Diameter (BFS):", solution.diameter_bfs(root))
+print("Diameter (DFS):", solution.diameter_dfs(root))

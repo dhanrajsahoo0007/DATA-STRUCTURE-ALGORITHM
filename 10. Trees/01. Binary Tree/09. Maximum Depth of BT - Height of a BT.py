@@ -1,10 +1,22 @@
+from collections import deque
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+
 # RECURSIVE DFS
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
         if not root:
             return 0
+        left_height = self.maxDepth(root.left)
+        right_height = self.maxDepth(root.right)
 
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+        return 1 + max(left_height, right_height)
 
 
 # ITERATIVE DFS
@@ -26,19 +38,18 @@ class Solution:
 # BFS
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        q = deque()
-        if root:
-            q.append(root)
+        queue = deque()
 
+        if root:
+            queue.append(root)
         level = 0
 
-        while q:
-
-            for i in range(len(q)):
-                node = q.popleft()
+        while queue:
+            for i in range(len(queue)):
+                node = queue.popleft()
                 if node.left:
-                    q.append(node.left)
+                    queue.append(node.left)
                 if node.right:
-                    q.append(node.right)
+                    queue.append(node.right)
             level += 1
         return level

@@ -1,24 +1,24 @@
 """
 Problem: Detect Cycle in Undirected Graph using BFS
 
-Given an undirected graph, detect if there is a cycle in the graph using Breadth-First Search (BFS).
-This implementation uses a queue of pairs to keep track of both the current node and its parent.
+    Given an undirected graph, detect if there is a cycle in the graph using Breadth-First Search (BFS).
+    This implementation uses a queue of pairs to keep track of both the current node and its parent.
 
 Function Signatures:
-def create_graph(V: int, edges: List[List[int]]) -> List[List[int]]
-def isCycleBFS(adj: List[List[int]], u: int, visited: List[bool]) -> bool
-def isCycle(V: int, adj: List[List[int]]) -> bool
+    def create_graph(V: int, edges: List[List[int]]) -> List[List[int]]
+    def isCycleBFS(adj: List[List[int]], u: int, visited: List[bool]) -> bool
+    def isCycle(V: int, adj: List[List[int]]) -> bool
 
 Where:
-V: number of vertices
-edges: list of edges, where each edge is represented as [u, v]
-adj: adjacency list representation of the graph
+    V: number of vertices
+    edges: list of edges, where each edge is represented as [u, v]
+    adj: adjacency list representation of the graph
 
 Returns:
-bool: True if a cycle is detected, False otherwise
+    bool: True if a cycle is detected, False otherwise
 
 Constraints:
-1 ≤ V, E ≤ 10^4
+    1 ≤ V, E ≤ 10^4
 """
 
 from typing import List

@@ -136,3 +136,4 @@ def findCircleNum(isConnected: List[List[int]]) -> int:
             provinces += 1
     
     return provinces
+    

@@ -36,10 +36,13 @@ Inverted Tree:
         9  6     3  1
 Implementation
 """
-def __init__(self, val=0, left=None, right=None):
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:

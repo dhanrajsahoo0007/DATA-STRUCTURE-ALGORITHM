@@ -1,6 +1,9 @@
 from typing import List
 from collections import defaultdict
 
+# The problem is same as detecting cycle in a graph 
+
+
 class Solution:
     def isCycleDFS(self, adj: dict, u: int, visited: List[bool], inRecursion: List[bool]) -> bool:
         visited[u] = True
@@ -27,6 +30,8 @@ class Solution:
         
         for i in range(numCourses):
             if not visited[i] and self.isCycleDFS(adj, i, visited, inRecursion):
+                # If there is a cycle that means we can't complete all the cycles 
+                # so return False 
                 return False
         
         return True
