@@ -47,16 +47,26 @@ class Solution:
 
         # Compare adjacent words to build the graph
         for i in range(len(words) - 1):
-            w1, w2 = words[i], words[i + 1]
-            min_len = min(len(w1), len(w2))
-            # Check if a longer word comes before its prefix
+            w1, w2 = words[i], words[i + 1]  # Get adjacent pairs of words
+            min_len = min(len(w1), len(w2))  # Find the length of the shorter word
+            
+            # Check if a longer word comes before its prefix (invalid case)
+            # For example, "apple" should not come before "app"
             if len(w1) > len(w2) and w1[:min_len] == w2[:min_len]:
-                return ""
+                return ""  # This is an invalid ordering, so return an empty string
+            
+            # Compare characters of w1 and w2
             for j in range(min_len):
-                if w1[j] != w2[j]:
+                if w1[j] != w2[j]:  # Find the first differing character
+                    # Convert characters to their corresponding indices
                     u, v = char_to_index[w1[j]], char_to_index[w2[j]]
+                    
+                    # Add this ordering information to the graph
+                    # This means character w1[j] comes before w2[j] in the alien alphabet
                     if v not in adj[u]:
                         adj[u].append(v)
+                    
+                    # We've found the first difference, so we can stop comparing these words
                     break
         print(f"adj -> {adj}")
 

@@ -1,18 +1,18 @@
 """
 Problem: Path With Minimum Effort
 
-You are given a 2D array 'heights' where heights[row][col] represents the height of cell (row, col).
-Find a path from the top-left cell to the bottom-right cell that minimizes the maximum absolute
-difference in heights between consecutive cells of the path.
+    You are given a 2D array 'heights' where heights[row][col] represents the height of cell (row, col).
+    Find a path from the top-left cell to the bottom-right cell that minimizes the maximum absolute
+    difference in heights between consecutive cells of the path.
 
-Return the minimum effort required for such a path.
+    Return the minimum effort required for such a path.
 
 Time Complexity: O(m * n * log(m * n)), where m and n are the dimensions of the grid.
 Space Complexity: O(m * n) for the result matrix and priority queue.
 
 Constraints:
-- 1 <= m, n <= 100
-- 1 <= heights[i][j] <= 10^6
+    - 1 <= m, n <= 100
+    - 1 <= heights[i][j] <= 10^6
 """
 
 from typing import List

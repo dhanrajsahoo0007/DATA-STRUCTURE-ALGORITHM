@@ -13,8 +13,8 @@ Problem Statement:
 Example 1:
     Input: numCourses = 2, prerequisites = [[1,0]]
     Output: [0,1]
-Explanation:    There are a total of 2 courses to take. To take course 1 you should have finished course 0.
-                So the correct course order is [0,1].
+    Explanation:    There are a total of 2 courses to take. To take course 1 you should have finished course 0.
+                    So the correct course order is [0,1].
 
 Example 2:
     Input: numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]

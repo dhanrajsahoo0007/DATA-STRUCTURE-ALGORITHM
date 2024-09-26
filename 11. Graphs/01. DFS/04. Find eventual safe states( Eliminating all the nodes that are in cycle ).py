@@ -58,6 +58,7 @@ class Solution:
             if not visited[i]:
                 dfs(graph, i, visited, in_recursion)
         
+        # Eliminating all the nodes that are in cycle 
         safe_nodes = [i for i in range(V) if not in_recursion[i]]
         return safe_nodes
 
