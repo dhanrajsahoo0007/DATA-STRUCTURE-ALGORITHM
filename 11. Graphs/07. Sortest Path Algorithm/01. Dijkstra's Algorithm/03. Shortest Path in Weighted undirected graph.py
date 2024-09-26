@@ -81,6 +81,8 @@ class Solution:
 if __name__ == "__main__":
     solution = Solution()
     
+    # n: The number of vertices (nodes) in the graph.
+    # m: The number of edges in the graph.
     # Example 1
     n1, m1 = 5, 6
     edges1 = [[1, 2, 2], [2, 5, 5], [2, 3, 4], [1, 4, 1], [4, 3, 3], [3, 5, 1]]

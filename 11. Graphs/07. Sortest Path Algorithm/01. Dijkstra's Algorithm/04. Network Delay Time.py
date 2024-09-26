@@ -3,7 +3,8 @@ Problem Statement:
     You are given a network of n nodes, labeled from 1 to n. 
     You are also given times, a list of travel times as directed edges times[i] = (ui, vi, wi),
     Where ui is the source node, vi is the target node, and wi is the time it takes for a signal to travel from source to target.   
-    We will send a signal from a given node k. Return the minimum time it takes for all the n nodes to receive the signal. 
+    We will send a signal from a given node k. 
+    Return the minimum time it takes for all the n nodes to receive the signal. 
     If it is impossible for all the n nodes to receive the signal, return -1.
 
 Time Complexity: O((N + E) * log(N)), where N is the number of nodes and E is the number of edges.
@@ -53,7 +54,9 @@ class Solution:
                     heapq.heappush(pq, (new_time, neighbor))
         
         # Find the maximum time (excluding node 0 and unreachable nodes)
-        max_time = max(d for i, d in enumerate(distances) if i > 0)
+        # max_time = max(d for i, d in enumerate(distances) if i > 0)
+        # as the oth element in the list will always be infinity (zero based index , we are taking n+1 in the calculation )
+        max_time = max(distances[1:])
         
         # If any node is unreachable, return -1
         return max_time if max_time < float('inf') else -1
@@ -61,7 +64,9 @@ class Solution:
 # Example usage
 if __name__ == "__main__":
     solution = Solution()
-    
+    #n: The number of nodes in the network
+    #k: The starting node from which the signal is sent
+
     # Example 1
     times1 = [[2,1,1],[2,3,1],[3,4,1]]
     n1, k1 = 4, 2
