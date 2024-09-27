@@ -4,7 +4,7 @@ Perform a boundary order traversal of a binary tree.
         1. Root node
         2. Left boundary nodes (top to bottom)
         3. Leaf nodes (left to right)
-        4. Right boundary nodes (bottom to top, excluding leaves)
+        4. Right boundary nodes (Reverse)(bottom to top, excluding leaves)
 
                 #           1
                 #        /      \
@@ -44,6 +44,7 @@ class Solution:
                 if not isLeaf(current):
                     result.append(current.val)
                 # Move to the next left boundary node
+                # If Left does not exist then only move to the right 
                 if current.left:
                     current = current.left
                 else:
@@ -57,6 +58,7 @@ class Solution:
                 if not isLeaf(current):
                     temp.append(current.val)
                 # Move to the next right boundary node
+                # If Right does not exist then only move to the left 
                 if current.right:
                     current = current.right
                 else:

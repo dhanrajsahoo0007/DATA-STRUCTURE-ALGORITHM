@@ -46,11 +46,13 @@ class Solution:
                 node = queue.popleft()
                 
                 if left_to_right:
-                    level.append(node.val)
+                    # Add to the end if left to right
+                    level.append(node.val)  
                     #level.append(node.val)
                 else:
-                    level.insert(0, node.val)
-                    # level.appendleft(node.val)
+                    # Add to the beginning if right to left
+                    level.insert(0, node.val)  
+                    # level.appendleft(node.val)         
                 
                 if node.left:
                     queue.append(node.left)
