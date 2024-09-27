@@ -1,3 +1,25 @@
+"""
+Problem Statement:
+    Implement a method to find the ceiling of a given number in a Binary Search Tree (BST).
+    The ceiling of a number X in a BST is the smallest element in the BST that is greater than or equal to X.
+
+Time Complexity: O(h), where h is the height of the tree
+Space Complexity: O(h) due to the recursive call stack
+
+Example BST:
+       8
+     /   \
+    4     12
+   / \   /  \
+  2   6 10  14
+
+For this BST:
+    ceil(5) = 6
+    ceil(13) = 14
+    ceil(15) = None
+"""
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val

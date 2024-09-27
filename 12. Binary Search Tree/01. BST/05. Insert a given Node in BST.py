@@ -1,61 +1,50 @@
-from collections import deque 
+"""
+Problem Statement:
+Given a Binary Search Tree (BST) and a new node value, insert the new node into the BST.
+A Binary Search Tree is a binary tree where for each node:
+- All nodes in the left subtree have values less than the node's value.
+- All nodes in the right subtree have values greater than the node's value.
+- Both the left and right subtrees are also binary search trees.
+
+Time Complexity: O(h), where h is the height of the tree.
+- In the worst case (skewed tree), h can be O(n), where n is the number of nodes.
+- In the average case (balanced tree), h is O(log n).
+
+Space Complexity: O(h) for the recursive call stack.
+- In the worst case, O(n) for a skewed tree.
+- In the average case, O(log n) for a balanced tree.
+"""
 
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
 
-def insert_dfs(root, val):
+def insert(root, value):
     if root is None:
-        return TreeNode(val)
-    if val < root.val:
-        root.left = insert_dfs(root.left, val)
-    elif val > root.val:
-        root.right = insert_dfs(root.right, val)
+        return TreeNode(value)
+    
+    if value < root.value:
+        root.left = insert(root.left, value)
+    else:
+        root.right = insert(root.right, value)
+    
     return root
 
-def insert_bfs(root, val):
-    if not root:
-        return TreeNode(val)
-    queue = deque([root])
-    while queue:
-        node = queue.popleft()
-        if val < node.val:
-            if node.left:
-                queue.append(node.left)
-            else:
-                node.left = TreeNode(val)
-                break
-        elif val > node.val:
-            if node.right:
-                queue.append(node.right)
-            else:
-                node.right = TreeNode(val)
-                break
-        else:
-            break
-    return root
-
-def inorder(root):
-    if root:
-        inorder(root.left)
-        print(root.val, end=' ')
-        inorder(root.right)
-
-def construct_and_print_bst(insert_function, values):
-    root = None
-    for value in values:
-        root = insert_function(root, value)
-    print("Inorder traversal of the constructed BST:")
-    inorder(root)
-    print()  # For a new line after inorder traversal
+def print_tree(root, level=0, prefix="Root: "):
+    if root is not None:
+        print(" " * (level * 4) + prefix + str(root.value))
+        print_tree(root.left, level + 1, "L--- ")
+        print_tree(root.right, level + 1, "R--- ")
 
 # Example usage
-values = [5, 3, 7, 1, 4, 6, 8]
-
-print("Using DFS (recursive) approach:")
-construct_and_print_bst(insert_dfs, values)
-
-print("\nUsing BFS approach:")
-construct_and_print_bst(insert_bfs, values)
+if __name__ == "__main__":
+    root = None
+    values = [5, 3, 7, 1, 4, 6, 8]
+    
+    for value in values:
+        root = insert(root, value)
+    
+    print("Binary Search Tree after insertion:")
+    print_tree(root)
