@@ -1,10 +1,10 @@
 """
 Problem Statement:
 Implement a Binary Search Tree (BST) with the following operations:
-1. Insert a value
-2. Search for a value
-3. Find the minimum value
-4. Find the maximum value
+    1. Insert a value
+    2. Search for a value
+    3. Find the minimum value
+    4. Find the maximum value
 
 A BST is a binary tree where for each node:
 - All nodes in the left subtree have values less than the node's value.
