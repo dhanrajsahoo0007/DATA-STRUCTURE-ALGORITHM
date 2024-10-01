@@ -15,10 +15,6 @@ Example 2:
     Output: [1,3,3,2,2]
     Explanation: '2' and '3' both have a frequency of 2, so they are sorted in decreasing order.
 
-Example 3:
-    Input: nums = [-1,1,-6,4,5,-6,1,4,1]
-    Output: [5,-1,4,4,-6,-6,1,1,1]
-
 Constraints:
     * 1 <= nums.length <= 100
     * -100 <= nums[i] <= 100
@@ -27,26 +23,25 @@ Time Complexity: O(n log k), where n is the number of elements in nums and k is 
 Space Complexity: O(n)
 """
 
+
 from typing import List
 from collections import Counter
 import heapq
 
 class Solution:
+
     def frequencySort(self, nums: List[int]) -> List[int]:
         counter = Counter(nums)
         minHeap = []
         result = []
-        
-        # Push items to the heap with (frequency, -num) as the key
-        # This ensures increasing frequency and decreasing value order
         for num, freq in counter.items():
-            heapq.heappush(minHeap, (freq, -num))
+            # only sorting the numbers(-num) by their order if both the occurrences are the same 
+            # for example if 2 and 3 both appear the 2 times then output order should be [3,3,2,2]
+            heapq.heappush(minHeap, (freq, -num, num))
         
         while minHeap:
-            freq, neg_num = heapq.heappop(minHeap)
-            num = -neg_num  # Convert back to the original number
-            result.extend([num] * freq)
-        
+            freq, _, num = heapq.heappop(minHeap)
+            result.extend(freq * [num])
         return result
 
 # Example usage

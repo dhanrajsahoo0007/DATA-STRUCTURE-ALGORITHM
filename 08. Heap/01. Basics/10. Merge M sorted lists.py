@@ -1,28 +1,40 @@
 import heapq
 
+"""
+Problem Statement:
+    Given an array of k sorted lists, merge them into a single sorted list.
 
-# Step:1 - We create a min-heap (min_heap) to keep track of the smallest elements from each list.
-# Step:2 - We initialize the heap by adding the first element from each list. Each entry in the heap is a tuple containing:
-#         The value of the element
-#         The index of the list it came from
-#         The index of the element within its list
+Example:
+    Input: [
+        [1, 4, 5],
+        [1, 3, 4],
+        [2, 6]
+    ]
+    Output: [1, 1, 2, 3, 4, 4, 5, 6]
 
+Algorithm Steps:
+    1. Create a min-heap to keep track of the smallest elements from each list.
+    2. Initialize the heap by adding the first element from each list. Each entry in the heap is a tuple containing:
+        - The value of the element
+        - The index of the list it came from
+        - The index of the element within its list
+    3. Enter a loop that continues until the heap is empty:
+        - Pop the smallest element from the heap
+        - Add this element to our result list
+        - If there are more elements in the list that this element came from, add the next element from that list to the heap
+    4. Once the heap is empty, we've processed all elements, and our result list contains all elements in sorted order.
 
-# Step:3- We enter a loop that continues until the heap is empty:
+Time Complexity: O(N log k)
+    - N is the total number of elements across all lists
+    - k is the number of lists
+    - Each element is pushed and popped from the heap once, and the heap has at most k elements at any time
 
-#         We pop the smallest element from the heap
-#         We add this element to our result list
-#         If there are more elements in the list that this element came from, we add the next element from that list to the heap
+Space Complexity: O(k) + O(N)
+    - O(k) for the heap
+    - O(N) for the output list
+"""
 
-
-# Step:4- Once the heap is empty, we've processed all elements, and our result list contains all elements in sorted order.
-
-# The time complexity of this solution is O(N log M), where N is the total number of elements across all lists, and M is the number of lists. 
-# This is because each element is pushed and popped from the heap once, and the heap has at most M elements at any time.
-# The space complexity is O(M) for the heap, plus O(N) for the output list.
-
-
-def merge_sorted_lists(lists):
+def merge_k_sorted_lists(lists):
     min_heap = []
     result = []
     
@@ -46,11 +58,13 @@ def merge_sorted_lists(lists):
     return result
 
 # Example usage
-lists = [
-    [1, 4, 5],
-    [1, 3, 4],
-    [2, 6]
-]
+if __name__ == "__main__":
+    lists = [
+        [1, 4, 5],
+        [1, 3, 4],
+        [2, 6]
+    ]
 
-merged = merge_sorted_lists(lists)
-print("Merged sorted list:", merged)
+    merged = merge_k_sorted_lists(lists)
+    print("Input lists:", lists)
+    print("Merged sorted list:", merged)
