@@ -1,6 +1,6 @@
 """
 Problem Statement:
-    Given an array of integers and a target sum K, find the length of the largest subarray 
+    Given an array of integers and a target sum K, find the length of the largest subarray.
     with sum of the elements equal to the given value K.
 
 Explanation:
@@ -45,8 +45,8 @@ def largest_subarray_sum_k(arr, k):
     return max_length
 
 # Example usage
-arr = [10, 5, 2, 7, 1, 9]
-k = 15
+arr = [10, 5, 2,-8, 7, -2, 9]
+k = 7
 result = largest_subarray_sum_k(arr, k)
 print(f"Length of the largest subarray with sum {k}: {result}")
 

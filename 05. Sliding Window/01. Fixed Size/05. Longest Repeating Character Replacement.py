@@ -1,6 +1,7 @@
 """
 Problem Statement:
     Given an array of integers arr and an integer k, find the maximum for each and every contiguous subarray of size k.
+
 Explanation:
     1. Initialize two pointers, i and j, both at the start of the array.
     2. Use a variable window_max to keep track of the maximum in the current window.

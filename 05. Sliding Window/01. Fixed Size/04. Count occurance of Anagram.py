@@ -21,8 +21,8 @@ from collections import Counter
 
 def count_anagram_occurrences(text, pattern):
     pattern_freq = Counter(pattern)
-    count = len(pattern_freq)  # Count of distinct characters in pattern
-    ans = 0  # Answer: count of anagram occurrences
+    distinct_char_count = len(pattern_freq)  # Count of distinct characters in pattern
+    anagram_count = 0  # Answer: count of anagram occurrences
     n, k = len(text), len(pattern)
     
     i, j = 0, 0  # Window pointers
@@ -32,7 +32,7 @@ def count_anagram_occurrences(text, pattern):
         if text[j] in pattern_freq:
             pattern_freq[text[j]] -= 1
             if pattern_freq[text[j]] == 0:
-                count -= 1
+                distinct_char_count -= 1
         
         # If window size is less than pattern length, expand window
         if j - i + 1 < k:
@@ -40,19 +40,19 @@ def count_anagram_occurrences(text, pattern):
         # If window size equals pattern length
         elif j - i + 1 == k:
             # Check if we found an anagram
-            if count == 0:
-                ans += 1
+            if distinct_char_count == 0:
+                anagram_count += 1
             
             # Slide the window
             if text[i] in pattern_freq:
                 pattern_freq[text[i]] += 1
                 if pattern_freq[text[i]] == 1:
-                    count += 1
+                    distinct_char_count += 1
             
             i += 1
             j += 1
     
-    return ans
+    return anagram_count
 
 # Example usage
 text = "forxxorfxdofr"
