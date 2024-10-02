@@ -85,6 +85,29 @@ class Solution:
         res.append(newInterval)
         return res
 
+    def insert_alt(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        """
+        Insert the interval if its overlapping, then merge it
+        """
+        merged_intervals = []
+        i = 0
+        n = len(intervals)
+        # first add all the intervals that end before the new interval starts
+        while i < n and intervals[i][1] < newInterval[0]:
+            merged_intervals.append(intervals[i])
+            i += 1
+        # now merge the new interval
+        while i < n and intervals[i][0] <= newInterval[1]:
+            newInterval = [min(newInterval[0], intervals[i][0]),
+                           max(newInterval[1], intervals[i][1])]
+            i += 1
+        merged_intervals.append(newInterval)
+        while i < n:
+            merged_intervals.append(intervals[i])
+            i += 1
+        return merged_intervals
+
+
 
 # Test cases
 def run_test_case(intervals, newInterval, case_number):

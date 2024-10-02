@@ -42,7 +42,6 @@ Explanation of the solution:
 Time Complexity: O(n log n) due to the sorting step. The merging process is O(n).
 Space Complexity: O(n) for the sorted list and the output list.
 
-
 """
 
 
@@ -50,6 +49,11 @@ from typing import List
 
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        """
+        Given a list of intervals, merge them and return the non-overlapping ones\
+        Time complexity of nLog N
+        space complexity of O(N)
+        """
         # Sort intervals based on start time
         intervals.sort(key=lambda pair: pair[0])
         
@@ -71,6 +75,7 @@ class Solution:
         
         # Return the merged intervals
         return output
+
 
 # Test cases
 def run_test_case(intervals, case_number):
