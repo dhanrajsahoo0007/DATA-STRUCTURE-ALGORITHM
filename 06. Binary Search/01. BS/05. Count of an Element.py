@@ -4,13 +4,13 @@ Problem Statement: Count of an Element in a Sorted Array
 
 Examples:
 
-    1. Input: arr = [1, 2, 3, 3, 3, 3, 5], target = 3
-    Output: 4
-    Explanation: The element 3 appears 4 times in the array.
+1. Input: arr = [1, 2, 3, 3, 3, 3, 5], target = 3
+Output: 4
+Explanation: The element 3 appears 4 times in the array.
 
-    2. Input: arr = [1, 2, 3, 4, 5], target = 6
-    Output: 0
-    Explanation: The element 6 does not appear in the array.
+2. Input: arr = [1, 2, 3, 4, 5], target = 6
+Output: 0
+Explanation: The element 6 does not appear in the array.
 
 Explanation of the approach:
 

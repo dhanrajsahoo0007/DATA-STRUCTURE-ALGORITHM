@@ -1,19 +1,19 @@
 """
 Problem Statement:
-Given an undirected graph with V vertices and E edges, detect if there is a cycle in the graph using Union-Find algorithm.
+    Given an undirected graph with V vertices and E edges, detect if there is a cycle in the graph using Union-Find algorithm.
 
 Time Complexity: O(E * α(V))
-- E is the number of edges
-- α is the inverse Ackermann function, which grows very slowly and is effectively constant for all practical values of V
-- In the worst case, we might need to perform a find operation for each edge
+    - E is the number of edges
+    - α is the inverse Ackermann function, which grows very slowly and is effectively constant for all practical values of V
+    - In the worst case, we might need to perform a find operation for each edge
 
 Space Complexity: O(V)
 - We use two arrays (parent and rank) of size V
 
 Explanation:
-The Union-Find algorithm uses two main operations:
-1. Find: Determine which subset a particular element is in
-2. Union: Join two subsets into a single subset
+    The Union-Find algorithm uses two main operations:
+        1. Find: Determine which subset a particular element is in
+        2. Union: Join two subsets into a single subset
 
 We start with each vertex in its own set. As we process edges, we union the sets of the vertices connected by the edge.
 If we encounter an edge whose vertices are already in the same set, we've found a cycle.

@@ -31,3 +31,19 @@ class Solution:
             longest_window_len = max(current_len, longest_window_len)
             window_end += 1
         return longest_window_len
+
+# Test function
+def run_test_case(s):
+    result = Solution().lengthOfLongestSubstring(s)
+    print(f"String: {s}")
+    print(f"Output: {result}")
+    print()
+
+# Test cases
+run_test_case("abcabcbb")
+run_test_case("bbbbb")
+run_test_case("pwwkew")
+run_test_case("")
+run_test_case("dvdf")
+run_test_case("tmmzuxt")
+run_test_case("abcdefghijklmnopqrstuvwxyz")

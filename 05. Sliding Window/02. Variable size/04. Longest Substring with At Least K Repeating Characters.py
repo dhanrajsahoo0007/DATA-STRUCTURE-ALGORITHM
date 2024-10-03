@@ -1,6 +1,6 @@
 """
 Problem Statement:
-Given a string and an integer K, find the length of the longest substring that contains exactly K unique characters.
+    Given a string and an integer K, find the length of the longest substring that contains exactly K unique characters.
 
 Explanation:
 We use a variable size sliding window technique with a dictionary to keep track of character frequencies:
@@ -15,41 +15,49 @@ Time Complexity: O(n), where n is the length of the string.
 Space Complexity: O(K), where K is the number of unique characters we're looking for.
 """
 
-def longest_k_unique_substring(s, k):
-    char_freq = {}
-    i = j = 0
-    max_length = -1
-    unique_count = 0
-    n = len(s)
+def longest_substring_k_repeating(s, k):
+    if k == 1:
+        return len(s)
+    
+    max_length = 0
+    for unique in range(1, 27):  # maximum 26 unique characters
+        char_freq = {}
+        i = j = 0
+        unique_count = 0
+        k_count = 0
+        n = len(s)
 
-    while j < n:
-        # If character is not in map or its frequency is 0, increment unique_count
-        if s[j] not in char_freq or char_freq[s[j]] == 0:
-            unique_count += 1
-        
-        # Update character frequency
-        char_freq[s[j]] = char_freq.get(s[j], 0) + 1
+        while j < n:
+            # Update character frequency
+            if s[j] not in char_freq:
+                char_freq[s[j]] = 1
+                unique_count += 1
+            else:
+                char_freq[s[j]] += 1
 
-        if unique_count < k:
-            j += 1
-        elif unique_count == k:
-            max_length = max(max_length, j - i + 1)
-            j += 1
-        else:  # unique_count > k
-            while unique_count > k:
+            if char_freq[s[j]] == k:
+                k_count += 1
+
+            # If we have more unique characters than allowed, shrink the window
+            while unique_count > unique:
                 char_freq[s[i]] -= 1
                 if char_freq[s[i]] == 0:
                     unique_count -= 1
+                if char_freq[s[i]] == k - 1:
+                    k_count -= 1
                 i += 1
-            if unique_count == k:
+
+            # If all characters in the current window are k-repeating
+            if unique_count == k_count == unique:
                 max_length = max(max_length, j - i + 1)
+
             j += 1
 
     return max_length
 
 # Test cases
 def run_test_case(s, k):
-    result = longest_k_unique_substring(s, k)
+    result = longest_substring_k_repeating(s, k)
     print(f"String: {s}")
     print(f"K: {k}")
     print(f"Output: {result}")

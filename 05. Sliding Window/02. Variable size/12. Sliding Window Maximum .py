@@ -5,14 +5,15 @@ Constraints:
 −10^4 ≤  nums[i] ≤ 10^4 
 1 ≤ w
 """
-def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-    """
+"""
     Using an monotonically decreasing dequeu
     Create a deque of size (k) add the elements and move the window
     as each element is moved out of the window, remove from the dequeue
-    Time: O(n).
-    Sapce: O(k)
-    """
+Time: O(n).
+Sapce: O(k)
+"""
+def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+    
     from collections import deque
     # Store the indexes of the elements in the array within the window
     dq = deque()

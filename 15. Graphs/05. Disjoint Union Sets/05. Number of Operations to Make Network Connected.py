@@ -1,23 +1,23 @@
 """
 Problem Statement:
-There are n computers numbered from 0 to n - 1 connected by ethernet cables connections forming a network where 
-connections[i] = [ai, bi] represents a connection between computers ai and bi. Any computer can reach any other 
-computer directly or indirectly through the network.
+    There are n computers numbered from 0 to n - 1 connected by ethernet cables connections forming a network where 
+    connections[i] = [ai, bi] represents a connection between computers ai and bi. Any computer can reach any other 
+    computer directly or indirectly through the network.
 
-You are given an initial computer network connections. You can extract certain cables between two directly connected 
-computers, and place them between any pair of disconnected computers to make them directly connected.
+    You are given an initial computer network connections. You can extract certain cables between two directly connected 
+    computers, and place them between any pair of disconnected computers to make them directly connected.
 
-Return the minimum number of times you need to do this in order to make all the computers connected. 
-If it is not possible, return -1.
+    Return the minimum number of times you need to do this in order to make all the computers connected. 
+    If it is not possible, return -1.
 
 Constraints:
-1 <= n <= 10^5
-1 <= connections.length <= min(n * (n - 1) / 2, 10^5)
-connections[i].length == 2
-0 <= ai, bi < n
-ai != bi
-There are no repeated connections.
-No two computers are connected by more than one cable.
+    1 <= n <= 10^5
+    1 <= connections.length <= min(n * (n - 1) / 2, 10^5)
+    connections[i].length == 2
+    0 <= ai, bi < n
+    ai != bi
+    There are no repeated connections.
+    No two computers are connected by more than one cable.
 
 Time Complexity: O(N + M), where N is the number of computers and M is the number of connections.
 Space Complexity: O(N) for the parent and rank arrays.

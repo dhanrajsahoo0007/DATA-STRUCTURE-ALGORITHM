@@ -8,9 +8,9 @@ This solution uses the Sliding Window technique with two pointers, i and j.
     2. Move j to the right, adding elements to window_sum.
     3. If window size < k, keep expanding by moving j.
     4. When window size == k:
-    - Update max_sum if necessary.
-    - Remove the leftmost element from window_sum.
-    - Slide the window by incrementing both i and j.
+        - Update max_sum if necessary.
+        - Remove the leftmost element from window_sum.
+        - Slide the window by incrementing both i and j.
     5. Repeat until j reaches the end of the array.
 
 Time Complexity: O(n), where n is the length of the input arrayWe traverse the array once with the two pointers.

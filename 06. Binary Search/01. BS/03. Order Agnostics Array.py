@@ -1,10 +1,10 @@
 """
 Problem Statement: Order-Agnostic Binary Search
 
-Implement a binary search algorithm that can find a target element in a sorted array,
-without knowing in advance whether the array is sorted in ascending or descending order.
-The function should return the index of the target element if it's present in the array,
-or -1 if it's not found.
+    Implement a binary search algorithm that can find a target element in a sorted array,
+    without knowing in advance whether the array is sorted in ascending or descending order.
+    The function should return the index of the target element if it's present in the array,
+    or -1 if it's not found.
 
 Examples:
 
