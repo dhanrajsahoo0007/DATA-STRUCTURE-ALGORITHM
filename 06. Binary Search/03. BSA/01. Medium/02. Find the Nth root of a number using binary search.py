@@ -5,19 +5,19 @@ Problem Statement:
     If the Nth root is not an integer, return -1.
 
 Algorithm (Binary Search):
-1. Define a helper function 'func' to calculate mid^n and compare with m:
-   - Return 1 if mid^n == m (exact root found)
-   - Return 2 if mid^n > m (current mid is too large)
-   - Return 0 if mid^n < m (current mid is too small)
-2. In the main NthRoot function:
-   - Initialize the search range: low = 1, high = m
-   - While low <= high:
-     a. Calculate mid = (low + high) // 2
-     b. Call func(mid, n, m) to compare mid^n with m
-     c. If func returns 1, we've found the exact root, return mid
-     d. If func returns 0, search in the upper half: low = mid + 1
-     e. If func returns 2, search in the lower half: high = mid - 1
-3. If no integer Nth root is found, return -1
+    1. Define a helper function 'func' to calculate mid^n and compare with m:
+        - Return 1 if mid^n == m (exact root found)
+        - Return 2 if mid^n > m (current mid is too large)
+        - Return 0 if mid^n < m (current mid is too small)
+    2. In the main NthRoot function:
+        - Initialize the search range: low = 1, high = m
+        - While low <= high:
+            a. Calculate mid = (low + high) // 2
+            b. Call func(mid, n, m) to compare mid^n with m
+            c. If func returns 1, we've found the exact root, return mid
+            d. If func returns 0, search in the upper half: low = mid + 1
+            e. If func returns 2, search in the lower half: high = mid - 1
+    3. If no integer Nth root is found, return -1
 
 Time Complexity: O(log(M) * N), where M is the number and N is the root we're finding
 Space Complexity: O(1), as we only use a constant amount of extra space
@@ -25,16 +25,18 @@ Space Complexity: O(1), as we only use a constant amount of extra space
 Note: This algorithm finds the integer Nth root. If no integer Nth root exists, it returns -1.
 """
 
+# This function checks if 'mid' is the nth root of 'm'
 def func(mid: int, n: int, m: int) -> int:
     ans = 1
     for i in range(1, n + 1):
         ans *= mid
         if ans > m:
-            return 2
+            return 2  # If ans > m, mid is too large
     if ans == m:
-        return 1
-    return 0
+        return 1  # If ans == m, mid is the exact nth root
+    return 0  # If ans < m, mid is too small
 
+# This function finds the integer nth root of m using binary search
 def NthRoot(n: int, m: int) -> int:
     low = 1
     high = m
@@ -42,12 +44,13 @@ def NthRoot(n: int, m: int) -> int:
         mid = (low + high) // 2
         midN = func(mid, n, m)
         if midN == 1:
-            return mid
+            return mid  # Exact nth root found
         elif midN == 0:
-            low = mid + 1
+            low = mid + 1  # Search in upper half
         else:
-            high = mid - 1
-    return -1
+            high = mid - 1  # Search in lower half
+    return -1  # No integer nth root exists
+
 
 # Example usage
 if __name__ == "__main__":
