@@ -21,8 +21,8 @@ Explanation:
     6. The sum of all these pairs gives us the total number of unreachable pairs.
 
 This approach is efficient because:
-- DSU operations (find and union) have near-constant time complexity with path compression and union by rank.
-- We only need to iterate through the nodes and edges once each.
+    - DSU operations (find and union) have near-constant time complexity with path compression and union by rank.
+    - We only need to iterate through the nodes and edges once each.
 """
 
 class Solution:

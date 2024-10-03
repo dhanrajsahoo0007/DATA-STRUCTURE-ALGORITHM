@@ -2,14 +2,14 @@
 Disjoint Set Union (DSU) Implementation with Union by Size
 
 This implementation provides three main operations:
-1. Initialization: Create a DSU with n elements.
-2. Find: Determine which set an element belongs to.
-3. Union: Merge two sets.
+    1. Initialization: Create a DSU with n elements.
+    2. Find: Determine which set an element belongs to.
+    3. Union: Merge two sets.
 
 Time Complexity:
-- Initialization: O(n)
-- Find: O(α(n)) amortized, where α(n) is the inverse Ackermann function
-- Union: O(α(n)) amortized
+    - Initialization: O(n)
+    - Find: O(α(n)) amortized, where α(n) is the inverse Ackermann function
+    - Union: O(α(n)) amortized
 
 Space Complexity: O(n) for storing parent and size arrays
 

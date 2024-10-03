@@ -19,6 +19,26 @@ Examples:
 Constraints:
 - 1 <= s.length <= 10^5
 - s consists of lowercase English letters.
+
+Explanation of the solution:
+
+    1. We use a stack to keep track of characters as we iterate through the string.
+    2. For each character in the input string:
+    - If the stack is not empty and the top of the stack matches the current character,
+        we pop the top element from the stack (removing the adjacent duplicate).
+    - Otherwise, we push the current character onto the stack.
+    3. After processing all characters, the stack contains the characters of the final string.
+    4. We join the characters in the stack to form the result string.
+
+Time Complexity: O(n), where n is the length of the input string.
+    - We iterate through each character in the string once.
+    - Each character is pushed and popped at most once.
+
+Space Complexity: O(n) in the worst case.
+    ase (no duplicates), we might store all characters in the stack.
+
+This stack-based approach allows us to efficiently remove adjacent duplicates in a single pass
+through the string, without the need for multiple iterations or string manipulations.
 """
 
 def removeDuplicates(s: str) -> str:
@@ -40,25 +60,3 @@ for test in test_cases:
     print(f"Input: {test}")
     print(f"Output: {result}")
     print()
-
-"""
-Explanation of the solution:
-
-1. We use a stack to keep track of characters as we iterate through the string.
-2. For each character in the input string:
-   - If the stack is not empty and the top of the stack matches the current character,
-     we pop the top element from the stack (removing the adjacent duplicate).
-   - Otherwise, we push the current character onto the stack.
-3. After processing all characters, the stack contains the characters of the final string.
-4. We join the characters in the stack to form the result string.
-
-Time Complexity: O(n), where n is the length of the input string.
-- We iterate through each character in the string once.
-- Each character is pushed and popped at most once.
-
-Space Complexity: O(n) in the worst case.
-- In the worst case (no duplicates), we might store all characters in the stack.
-
-This stack-based approach allows us to efficiently remove adjacent duplicates in a single pass
-through the string, without the need for multiple iterations or string manipulations.
-"""

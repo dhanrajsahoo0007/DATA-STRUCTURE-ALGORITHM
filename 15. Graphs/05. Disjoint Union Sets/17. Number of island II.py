@@ -44,7 +44,7 @@ class DSU:
         self.number_of_components -= 1
 
 class Solution:
-    def numIslands2(self, m: int, n: int, positions: List[List[int]]) -> List[int]:
+    def numIslands2(self, m: int, n: int, positions: list[list[int]]) -> list[int]:
         dsu = DSU(m * n)
         grid = [[0] * n for _ in range(m)]
         results = []

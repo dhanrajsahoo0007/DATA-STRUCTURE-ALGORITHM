@@ -33,6 +33,7 @@ def longest_k_unique_substring(s, k):
         if unique_count < k:
             j += 1
         elif unique_count == k:
+            
             max_length = max(max_length, j - i + 1)
             j += 1
         else:  # unique_count > k
