@@ -4,6 +4,15 @@ Problem Statement:
     The Nth root of a number M is a number R such that R^N equals M.
     If the Nth root is not an integer, return -1.
 
+Example:
+    Input: n = 3, m = 27
+    Output: 3
+    Explanation: 3 is the cube root of 27 (3^3 = 27)
+
+    Input: n = 3, m = 9
+    Output: -1
+    Explanation: The cube root of 9 is not an integer (2.08...)
+
 Algorithm (Binary Search):
     1. Define a helper function 'func' to calculate mid^n and compare with m:
         - Return 1 if mid^n == m (exact root found)

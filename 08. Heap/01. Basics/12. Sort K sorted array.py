@@ -1,5 +1,3 @@
-import heapq
-
 """
 Problem Statement:
     -sorted array. A K-sorted array is an array where each element is at most K positions away from its position in the sorted array.
@@ -25,7 +23,7 @@ Time Complexity: O(n log k)
 Space Complexity: O(k)
     - We use a heap of size k+1
 """
-
+import heapq
 def sort_k_sorted_array(arr, k):
     n = len(arr)
     

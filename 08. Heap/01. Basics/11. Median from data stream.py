@@ -1,5 +1,3 @@
-import heapq
-
 """
 Problem Statement:
     Design a data structure that supports the following two operations:
@@ -29,6 +27,7 @@ Time Complexity:
 
 Space Complexity: O(n) to store all the numbers.
 """
+import heapq
 
 class MedianFinder:
     def __init__(self):

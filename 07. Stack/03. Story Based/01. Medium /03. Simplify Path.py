@@ -24,8 +24,6 @@ Examples:
     Input: "/home/user/Documents/../Pictures" => Output: "/home/user/Pictures"
     Input: "/.../a/../b/c/../d/./" => Output: "/.../b/d"
 
-Analysis:
-
 1. Time Complexity: O(n), where n is the length of the input path
    - Splitting the path: O(n)
    - Iterating through the components: O(n)
@@ -35,19 +33,7 @@ Analysis:
    - The 'output' list can store up to n components in the worst case
    - Additional space for the split operation: O(n)
 
-3. Comparison with the previous solution:
-   - This solution uses a class structure, which is common in leetcode-style problems
-   - It uses an 'output' list instead of a 'stack', but the functionality is the same
-   - The logic for processing path components is identical
-   - This solution doesn't handle the case where the path ends with '/' explicitly, 
-     but it works correctly due to the splitting and joining operations
 
-4. Potential improvements:
-   - Could use more descriptive variable names (e.g., 'components' instead of 'path' after splitting)
-   - Could add type hints for the 'output' list
-   - Could add example usage and test cases within the class or as separate methods
-
-Overall, this is a clean and efficient solution to the problem.
 """
 
 class Solution:

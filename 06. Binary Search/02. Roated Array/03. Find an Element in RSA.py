@@ -9,7 +9,7 @@ For example:
     The array was originally sorted in ascending order and then rotated. We need to find the target
     element 0, which is at index 4 in this rotated array.
 
-APPRACH - 1
+APPROACH - 1
 =============
 Based on the previous problem of finding how many times the array is roated 
 

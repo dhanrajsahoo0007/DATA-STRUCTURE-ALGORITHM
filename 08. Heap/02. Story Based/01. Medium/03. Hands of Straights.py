@@ -1,7 +1,3 @@
-import heapq
-from collections import Counter
-from typing import List
-
 """
 Problem Statement:
     Given an array of integers and a positive integer k, determine if it's possible to divide 
@@ -30,6 +26,9 @@ Space Complexity: O(n)
     - Counter: O(n)
     - Heap: O(n)
 """
+import heapq
+from collections import Counter
+from typing import List
 
 class Solution:
     def isPossibleDivide(self, nums: List[int], k: int) -> bool:

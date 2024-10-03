@@ -3,8 +3,8 @@ Problem Statement:
 This algorithm solves two related problems:
 
 1. Find a Peak Element in an Array:
-   A peak element in an array is an element that is strictly greater than its neighbors. Given an integer array arr, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
-
+   A peak element in an array is an element that is strictly greater than its neighbors. Given an integer array arr, find a peak element, and return its index. 
+   If the array contains multiple peaks, return the index to any of the peaks.
    You may imagine that arr[-1] = arr[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.
 
 2. Find Maximum Element in a Bitonic Array:
@@ -14,9 +14,9 @@ The algorithm below efficiently solves both these problems using the same approa
 
 Algorithm (Binary Search):
     1. Handle edge cases:
-    - If array has only one element, return 0
-    - If first element is greater than second, return 0
-    - If last element is greater than second-last, return n-1
+        - If array has only one element, return 0
+        - If first element is greater than second, return 0
+        - If last element is greater than second-last, return n-1
     2. Initialize low = 1 and high = n-2
     3. While low <= high:
     a. Calculate mid = (low + high) // 2
@@ -29,18 +29,23 @@ Time Complexity: O(log n), where n is the length of the array
 Space Complexity: O(1), as we only use a constant amount of extra space
 
 Note: 
-- For the Peak Element problem, this algorithm finds any peak element, not necessarily the global maximum.
-- For the Bitonic Array problem, this algorithm finds the maximum element, which is the unique peak in the array.
+    - For the Peak Element problem, this algorithm finds any peak element, not necessarily the global maximum.
+    - For the Bitonic Array problem, this algorithm finds the maximum element, which is the unique peak in the array.
 """
 
 def findPeakElement(arr: [int]) -> int:
     n = len(arr)  # Size of the array
 
     # Edge cases:
+    # Case 1: If the array has only one element, it's the peak
     if n == 1:
         return 0
+    
+    # Case 2: If the first element is greater than the second, it's a peak
     if arr[0] > arr[1]:
         return 0
+    
+    # Case 3: If the last element is greater than the second-to-last, it's a peak
     if arr[n - 1] > arr[n - 2]:
         return n - 1
 
