@@ -13,6 +13,17 @@ Constraints:
     * 2 <= asteroids.length <= 10^4
     * -1000 <= asteroids[i] <= 1000
     * asteroids[i] != 0
+
+Time Complexity: O(n)
+    - We iterate through each asteroid once in the outer loop: O(n)
+    - Each asteroid can be pushed and popped from the stack at most once: O(n)
+    - Therefore, the overall time complexity is O(n)
+
+Space Complexity: O(n)
+    - In the worst case, when no collisions occur, we might store all asteroids in the stack
+    - Therefore, the space complexity is O(n)
+
+where n is the number of asteroids in the input list.
 """
 
 
@@ -50,18 +61,6 @@ class Solution:
 
         return stack  # The stack now contains all surviving asteroids
 
-"""
-Time Complexity: O(n)
-- We iterate through each asteroid once in the outer loop: O(n)
-- Each asteroid can be pushed and popped from the stack at most once: O(n)
-- Therefore, the overall time complexity is O(n)
-
-Space Complexity: O(n)
-- In the worst case, when no collisions occur, we might store all asteroids in the stack
-- Therefore, the space complexity is O(n)
-
-where n is the number of asteroids in the input list.
-"""
 
 # Test cases
 def run_tests():

@@ -24,6 +24,26 @@ Examples:
 3. Input: tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
    Output: 22
    Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5 = 22
+
+Explanation of the solution:
+
+    1. We define a Solution class with the evalRPN method, which takes a list of tokens as input and returns the evaluated result as an integer.
+    2. We use a stack (st) to keep track of operands and intermediate results.
+    3. We iterate through each token in the input list:
+    - If the token is an operator ('+', '-', '*', '/'):
+        * Pop the top two elements from the stack (these are the operands).
+        * Perform the operation.
+        * Push the result back onto the stack.
+    - If the token is a number:
+        * Convert it to an integer and push it onto the stack.
+    4. After processing all tokens, the final result will be the only element left in the stack.
+
+Time Complexity: O(n), where n is the number of tokens. 
+                - We iterate through each token once.
+
+Space Complexity: O(n) in the worst case.
+                - In the worst case (e.g., all numbers and no operators), we might store all tokens in the stack.
+
 """
 
 from typing import List
@@ -62,25 +82,3 @@ for i, case in enumerate(test_cases, 1):
     print(f"Input: {case}")
     print(f"Output: {result}")
     print()
-
-"""
-Explanation of the solution:
-
-1. We define a Solution class with the evalRPN method, which takes a list of tokens as input and returns the evaluated result as an integer.
-2. We use a stack (st) to keep track of operands and intermediate results.
-3. We iterate through each token in the input list:
-   - If the token is an operator ('+', '-', '*', '/'):
-     * Pop the top two elements from the stack (these are the operands).
-     * Perform the operation.
-     * Push the result back onto the stack.
-   - If the token is a number:
-     * Convert it to an integer and push it onto the stack.
-4. After processing all tokens, the final result will be the only element left in the stack.
-
-Time Complexity: O(n), where n is the number of tokens.
-- We iterate through each token once.
-
-Space Complexity: O(n) in the worst case.
-- In the worst case (e.g., all numbers and no operators), we might store all tokens in the stack.
-
-"""

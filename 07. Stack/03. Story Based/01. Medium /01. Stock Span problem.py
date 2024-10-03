@@ -6,12 +6,12 @@ Problem Statement: Online Stock Span
     for which the stock price was less than or equal to the price of that day.
 
 For example:
-1. If the prices of the stock in the last four days is [7,2,1,2] and the price of the stock today is 2, 
-   then the span of today is 4 because starting from today, the price of the stock was less than or 
-   equal 2 for 4 consecutive days.
-2. If the prices of the stock in the last four days is [7,34,1,2] and the price of the stock today is 8, 
-   then the span of today is 3 because starting from today, the price of the stock was less than or 
-   equal 8 for 3 consecutive days.
+    1. If the prices of the stock in the last four days is [7,2,1,2] and the price of the stock today is 2, 
+        then the span of today is 4 because starting from today, the price of the stock was less than or 
+        equal 2 for 4 consecutive days.
+    2. If the prices of the stock in the last four days is [7,34,1,2] and the price of the stock today is 8, 
+        then the span of today is 3 because starting from today, the price of the stock was less than or 
+        equal 8 for 3 consecutive days.
 
 Implement the StockSpanner class:
     1. StockSpanner() Initializes the object of the class.
@@ -40,16 +40,16 @@ Explanation of the solution:
 
     1. We initialize the StockSpanner with an empty stack.
     2. In the next() method:
-    - We start with a span of 1 (the current day).
-    - We pop elements from the stack while their prices are <= the current price.
-    - For each popped element, we add its span to our current span.
-    - We push the current (price, span) pair onto the stack.
-    - We return the calculated span.
+        - We start with a span of 1 (the current day).
+        - We pop elements from the stack while their prices are <= the current price.
+        - For each popped element, we add its span to our current span.
+        - We push the current (price, span) pair onto the stack.
+        - We return the calculated span.
 
 Time Complexity: 
     - O(1) amortized time complexity per call to next().
     - While a single call might take O(n) in the worst case, the overall time complexity 
-    for n calls is O(n), making it O(1) amortized per call.
+      for n calls is O(n), making it O(1) amortized per call.
 
 Space Complexity: 
     - O(n) in the worst case, where n is the number of days.

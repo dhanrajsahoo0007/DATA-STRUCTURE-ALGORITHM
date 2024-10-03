@@ -1,52 +1,29 @@
 """
 Problem Statement:
-Given an absolute path for a Unix-style file system, simplify it to its canonical form.
-The path begins with '/' and may contain '.', '..', and alphanumeric characters.
+    Given an absolute path for a Unix-style file system, simplify it to its canonical form.
+    The path begins with '/' and may contain '.', '..', and alphanumeric characters.
 
 Rules:
-1. A single period '.' represents the current directory.
-2. A double period '..' represents the parent directory.
-3. Multiple consecutive slashes '///' are treated as a single slash '/'.
-4. Any other period sequences (e.g. '...') are treated as file/directory names.
+    1. A single period '.' represents the current directory.
+    2. A double period '..' represents the parent directory.
+    3. Multiple consecutive slashes '///' are treated as a single slash '/'.
+    4. Any other period sequences (e.g. '...') are treated as file/directory names.
 
 The simplified canonical path should:
-- Start with a single slash '/'.
-- Have no trailing slash '/' (except for the root directory).
-- Have no '.' or '..' components.
-- Have only single slashes between directory names.
+    - Start with a single slash '/'.
+    - Have no trailing slash '/' (except for the root directory).
+    - Have no '.' or '..' components.
+    - Have only single slashes between directory names.
 
 Examples:
-Input: "/home/" => Output: "/home"
-Input: "/home//foo/" => Output: "/home/foo"
-Input: "/a/./b/../../c/" => Output: "/c"
-Input: "/../" => Output: "/"
-Input: "/home/../../.." => Output: "/"
-Input: "/home/user/Documents/../Pictures" => Output: "/home/user/Pictures"
-Input: "/.../a/../b/c/../d/./" => Output: "/.../b/d"
-"""
+    Input: "/home/" => Output: "/home"
+    Input: "/home//foo/" => Output: "/home/foo"
+    Input: "/a/./b/../../c/" => Output: "/c"
+    Input: "/../" => Output: "/"
+    Input: "/home/../../.." => Output: "/"
+    Input: "/home/user/Documents/../Pictures" => Output: "/home/user/Pictures"
+    Input: "/.../a/../b/c/../d/./" => Output: "/.../b/d"
 
-class Solution:
-    def simplifyPath(self, path: str) -> str:
-        
-        path = path.split("/")
-        output = []
-
-        for i in range(len(path)):
-            if path[i] == "" or path[i] == ".":
-                # Ignore empty components and current directory
-                continue
-            elif path[i] == "..":
-                # Go up one directory if possible
-                if output:
-                    output.pop()
-            else:
-                # Add valid directory or file name to the output
-                output.append(path[i])
-        
-        path = "/".join(output)
-        return "/" + path
-
-"""
 Analysis:
 
 1. Time Complexity: O(n), where n is the length of the input path
@@ -72,6 +49,29 @@ Analysis:
 
 Overall, this is a clean and efficient solution to the problem.
 """
+
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        
+        path = path.split("/")
+        output = []
+
+        for i in range(len(path)):
+            if path[i] == "" or path[i] == ".":
+                # Ignore empty components and current directory
+                continue
+            elif path[i] == "..":
+                # Go up one directory if possible
+                if output:
+                    output.pop()
+            else:
+                # Add valid directory or file name to the output
+                output.append(path[i])
+        
+        path = "/".join(output)
+        return "/" + path
+
+
 
 # Example test cases
 def run_tests():
