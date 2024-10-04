@@ -2,15 +2,16 @@
 Problem Statement:
     Given an array of integers and a positive integer k, determine if it's possible to divide 
     the array into sets of k consecutive numbers. 
+    
     This problem is also known as "Hand of Straights" where the array represents card values and k is the group size.
 
     For "Divide Array in Sets of K Consecutive Numbers":
-    - Input: An array of integers 'nums' and an integer 'k'
-    - Output: True if the array can be divided into sets of k consecutive numbers, False otherwise
+        - Input: An array of integers 'nums' and an integer 'k'
+        - Output: True if the array can be divided into sets of k consecutive numbers, False otherwise
 
     For "Hand of Straights":
-    - Input: An array 'hand' representing card values and an integer 'groupSize'
-    - Output: True if the cards can be rearranged into groups of 'groupSize' consecutive cards, False otherwise
+        - Input: An array 'hand' representing card values and an integer 'groupSize'
+        - Output: True if the cards can be rearranged into groups of 'groupSize' consecutive cards, False otherwise
 
 Approach:
     We use a combination of a hash map (Counter) to count occurrences of each number

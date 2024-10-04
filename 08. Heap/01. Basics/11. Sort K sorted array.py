@@ -1,6 +1,6 @@
 """
-Problem Statement:
-    -sorted array. A K-sorted array is an array where each element is at most K positions away from its position in the sorted array.
+Problem Statement: Sort K sorted array (Nearly sorted array)
+    A K-sorted array is an array where each element is at most K positions away from its position in the sorted array.
 
 Example:
     Input: arr = [6, 5, 3, 2, 8, 10, 9], k = 3
@@ -9,8 +9,8 @@ Example:
 Algorithm Steps:
     1. Create a min heap of the first k+1 elements of the array.
     2. For each remaining element in the array:
-    a. Extract the minimum element from the heap and place it in the output array.
-    b. Add the next element from the input array to the heap.
+        a. Extract the minimum element from the heap and place it in the output array.
+        b. Add the next element from the input array to the heap.
     3. Extract and place the remaining elements from the heap into the output array.
 
 Time Complexity: O(n log k)

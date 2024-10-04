@@ -19,23 +19,23 @@ Algorithm:
 import heapq
 def find_k_closest(numbers, target, k):
     # Use a max heap to keep track of the k closest numbers
-    heap = []
+    maxHeap = []
     
     for num in numbers:
         diff = abs(num - target)
         
         # If we haven't found k numbers yet, add to the heap
-        if len(heap) < k:
-            heapq.heappush(heap, (-diff, num))
+        if len(maxHeap) < k:
+            heapq.heappush(maxHeap, (-diff, num))
         else:
             # If this number is closer than the furthest in our heap,
             # remove the furthest and add this one
-            if diff < -heap[0][0]:
-                heapq.heappop(heap)
-                heapq.heappush(heap, (-diff, num))
+            if diff < -maxHeap[0][0]:
+                heapq.heappop(maxHeap)
+                heapq.heappush(maxHeap, (-diff, num))
     
     # Extract the numbers from the heap
-    result = [num for _, num in heap]
+    result = [num for _, num in maxHeap]
     # Return sorted based on the nearest element 
     return sorted(result)
 

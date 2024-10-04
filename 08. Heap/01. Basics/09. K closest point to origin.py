@@ -1,6 +1,7 @@
 """
 Problem Statement:
     Given an array of points in a 2D plane, find the K closest points to the origin (0, 0).
+    
 Explanation:
     We use a max heap to keep track of the K closest points. The heap stores tuples of (-distance, point).
     We iterate through all points:

@@ -1,8 +1,8 @@
 """
 Problem Statement:
     Design a data structure that supports the following two operations:
-    1. addNum(int num) - Add an integer number from the data stream to the data structure.
-    2. findMedian() - Return the median of all elements so far.
+        1. addNum(int num) - Add an integer number from the data stream to the data structure.
+        2. findMedian() - Return the median of all elements so far.
 
     The median is the middle value in an ordered integer list. If the size of the list is even, the median is the average of the two middle values.
 
@@ -31,23 +31,30 @@ import heapq
 
 class MedianFinder:
     def __init__(self):
-        self.small = []  # max heap for the smaller half
-        self.large = []  # min heap for the larger half
+        self.lower_half = []  # max heap for the smaller half
+        self.upper_half = []  # min heap for the larger half
 
     def addNum(self, num: int) -> None:
         # Push to the max heap and then move the largest to the min heap
-        heapq.heappush(self.small, -num)
-        heapq.heappush(self.large, -heapq.heappop(self.small))
+        heapq.heappush(self.lower_half, -num)
+        heapq.heappush(self.upper_half, -heapq.heappop(self.lower_half))
         
         # Balance the heaps
-        if len(self.large) > len(self.small):
-            heapq.heappush(self.small, -heapq.heappop(self.large))
+        if len(self.upper_half) > len(self.lower_half):
+            heapq.heappush(self.lower_half, -heapq.heappop(self.upper_half))
 
     def findMedian(self) -> float:
-        if len(self.small) > len(self.large):
-            return -self.small[0]
+        # Check if the number of elements is odd
+        if len(self.lower_half) > len(self.upper_half):
+            # If odd, the median is the top of the lower_half (max heap)
+            # We negate it because lower_half stores negated values
+            return -self.lower_half[0]
         else:
-            return (self.large[0] - self.small[0]) / 2
+            # If even, the median is the average of the two middle elements
+            # The middle elements are:
+                # 1. The top of the upper_half (min heap)
+                # 2. The negated top of the lower_half (max heap)
+            return (self.upper_half[0] + (-self.lower_half[0])) / 2
 
 # Example usage
 if __name__ == "__main__":

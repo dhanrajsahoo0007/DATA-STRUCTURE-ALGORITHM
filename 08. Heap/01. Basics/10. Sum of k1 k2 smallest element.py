@@ -32,7 +32,12 @@ def sum_between_k1_and_k2(arr, k1, k2):
     k1_smallest = find_kth_smallest(arr, k1)
     
     # Sum elements between k1_smallest and k2_smallest
-    result = sum(x for x in arr if k1_smallest < x < k2_smallest)
+    result = 0
+    for x in arr:
+        if k1_smallest < x < k2_smallest:
+            result += x
+    ## OR
+    # result = sum(x for x in arr if k1_smallest < x < k2_smallest)
     
     return result
 

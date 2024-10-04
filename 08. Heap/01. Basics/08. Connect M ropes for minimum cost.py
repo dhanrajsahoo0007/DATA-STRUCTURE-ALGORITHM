@@ -4,20 +4,23 @@ Problem Statement:
     The cost of connecting two ropes is equal to the sum of their lengths. The goal is to connect all the ropes with the minimum total cost.
 
     Example:
-    Let's say we have four ropes with the following lengths: [4, 3, 2, 6]
-    We need to connect these ropes in a way that minimizes the total cost. Here's how it might work:
+        Let's say we have four ropes with the following lengths: [4, 3, 2, 6]
+        We need to connect these ropes in a way that minimizes the total cost. Here's how it might work:
 
 First connection:
     Choose the two shortest ropes: 2 and 3
     Cost of connecting: 2 + 3 = 5
     Remaining ropes: [4, 5, 6]
+
 Second connection:
     Choose the two shortest ropes: 4 and 5
     Cost of connecting: 4 + 5 = 9
     Remaining ropes: [6, 9]
+
 Final connection:
     Connect the remaining ropes: 6 and 9
     Cost of connecting: 6 + 9 = 15
+
 Total cost: 5 + 9 + 15 = 29
 
 This approach of always choosing the two shortest ropes to connect next results in the minimum total cost.
