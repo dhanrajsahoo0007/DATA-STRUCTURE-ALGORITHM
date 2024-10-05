@@ -56,7 +56,7 @@ def NthRoot(n: int, m: int) -> int:
             return mid  # Exact nth root found
         elif midN == 0:
             low = mid + 1  # Search in upper half
-        else:
+        else: # if mid is 2
             high = mid - 1  # Search in lower half
     return -1  # No integer nth root exists
 

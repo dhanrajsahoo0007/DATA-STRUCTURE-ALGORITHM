@@ -1,11 +1,13 @@
 """
-Minimum Time to Complete Trips
+Problem Statement:  Minimum Time to Complete Trips
+                    * similar to the Koko Eating Bananas problem 
 
-Problem Statement:
     You are given an array 'time' where time[i] denotes the time taken by the ith bus to complete one trip.
     Each bus can make multiple trips successively; that is, the next trip can start immediately after completing the current trip. 
+    
     Also, each bus operates independently; that is, the trips of one bus do not influence the trips of any other bus.
     You are also given an integer 'totalTrips', which denotes the number of trips all buses should make in total. 
+    
     Return the minimum time required for all buses to complete at least 'totalTrips' trips.
 
 Example 1:
@@ -34,11 +36,11 @@ Constraints:
 Solution Explanation:
 The solution uses a binary search approach to find the minimum time required:
 
-1. We define a helper function 'possible' that checks if it's possible to complete the required number of trips in a given time.
-2. In the main function 'minimumTime', we perform a binary search on the time range:
-   - The minimum possible time is 1.
-   - The maximum possible time is the minimum time of any bus multiplied by the total trips required.
-3. We keep narrowing down our search range until we find the minimum time that satisfies the condition.
+    1. We define a helper function 'possible' that checks if it's possible to complete the required number of trips in a given time.
+    2. In the main function 'minimumTime', we perform a binary search on the time range:
+        - The minimum possible time is 1.
+        - The maximum possible time is the minimum time of any bus multiplied by the total trips required.
+    3. We keep narrowing down our search range until we find the minimum time that satisfies the condition.
 
 Time Complexity: O(n * log(min(time) * totalTrips)), where n is the length of the time array.
 - The binary search takes O(log(min(time) * totalTrips)) iterations.
@@ -46,7 +48,7 @@ Time Complexity: O(n * log(min(time) * totalTrips)), where n is the length of th
 
 Space Complexity: O(1), as we only use a constant amount of extra space.
 
-Implementation:
+
 """
 
 from typing import List

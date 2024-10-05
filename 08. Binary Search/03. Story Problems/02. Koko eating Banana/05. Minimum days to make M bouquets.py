@@ -1,7 +1,7 @@
 """
 
 
-Problem Statement:Minimum Days to Make m Bouquets
+Problem Statement: Minimum Days to Make m Bouquets
                   * similar to the Koko Eating Bananas problem    
     
     You are given an integer array bloomDay, an integer m and an integer k.
@@ -55,11 +55,17 @@ class Solution:
         
         # Find count of consecutive flowers you can pick at mid day
         for day in bloom_day:
+            
             if day <= mid:
+                # If the flower has bloomed by 'mid' day, increment the consecutive count
                 consecutive_count += 1
             else:
+                # If not, reset the consecutive count
                 consecutive_count = 0
+            
+            # If we have enough consecutive flowers for a bouquet
             if consecutive_count == k:
+                # Increment the bouquet count and reset consecutive count
                 num_of_bouquets += 1
                 consecutive_count = 0
         

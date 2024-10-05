@@ -2,27 +2,27 @@
 Frog Jump with K Distance Problem
 
 Problem Statement:
-A frog is crossing a river. The river is divided into x units, and at each unit, there may or may not be a stone. 
-The frog can jump on a stone, but it must not jump into the water.
+    A frog is crossing a river. The river is divided into x units, and at each unit, there may or may not be a stone. 
+    The frog can jump on a stone, but it must not jump into the water.
 
-Given a list of stones' positions (in units) in sorted ascending order, determine if the frog can cross the river 
-by landing on the last stone. Initially, the frog is on the first stone and assumes the first jump must be 1 unit.
+    Given a list of stones' positions (in units) in sorted ascending order, determine if the frog can cross the river 
+    by landing on the last stone. Initially, the frog is on the first stone and assumes the first jump must be 1 unit.
 
-If the frog's last jump was k units, its next jump must be either k - 1, k, or k + 1 units. The frog can only jump 
-in the forward direction.
+    If the frog's last jump was k units, its next jump must be either k - 1, k, or k + 1 units. The frog can only jump 
+    in the forward direction.
 
 Input:
-stones: List of integers representing the positions of stones
-n: Number of stones
-k: Maximum jump distance
+    stones: List of integers representing the positions of stones
+    n: Number of stones
+    k: Maximum jump distance
 
 Output:
-Minimum total cost (energy) to reach the last stone
+    Minimum total cost (energy) to reach the last stone
 
 Example:
-Input: stones = [0, 1, 3, 5, 6, 8, 12, 17], n = 8, k = 5
-Output: 5
-Explanation: The frog can jump to stones at positions 1 (1 unit), 3 (2 units), 5 (2 units), 8 (3 units), and 17 (5 units).
+    Input: stones = [0, 1, 3, 5, 6, 8, 12, 17], n = 8, k = 5
+    Output: 5
+    Explanation: The frog can jump to stones at positions 1 (1 unit), 3 (2 units), 5 (2 units), 8 (3 units), and 17 (5 units).
 """
 # 1. Recursive Approach
 def frog_jump_k_recursive(stones, n, k):

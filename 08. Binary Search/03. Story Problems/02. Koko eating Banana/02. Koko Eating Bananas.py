@@ -1,6 +1,6 @@
 """
 Problem Statement: Koko Eating Bananas
-    * similar to the Minimum Time to complete a trip problem 
+    *  Find the Smallest Divisor Given a Threshold
     
     Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
     Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
@@ -30,8 +30,8 @@ Solution Explanation:
 
     1. We define a helper function 'can_eat_all' that checks if Koko can eat all bananas within h hours at a given eating speed.
     2. In the main function 'min_eating_speed', we perform a binary search on the possible eating speeds:
-    - The minimum possible speed is 1.
-    - The maximum possible speed is the maximum number of bananas in any pile.
+        - The minimum possible speed is 1.
+        - The maximum possible speed is the maximum number of bananas in any pile.
     3. We keep narrowing down our search range until we find the minimum speed that allows Koko to eat all bananas within h hours.
 
 Time Complexity: O(n * log(max(piles))), where n is the length of the piles array.

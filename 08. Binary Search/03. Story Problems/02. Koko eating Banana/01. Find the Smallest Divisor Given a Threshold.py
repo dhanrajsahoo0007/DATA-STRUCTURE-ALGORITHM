@@ -1,6 +1,5 @@
 """
 Problem Statement: Find the Smallest Divisor Given a Threshold
-    * similar to the Koko Eating Bananas problem
     
     Given an array of integers nums and an integer threshold, we will choose a positive integer divisor, 
     divide all the array by it, and sum the division's result. Find the smallest divisor such that the 
