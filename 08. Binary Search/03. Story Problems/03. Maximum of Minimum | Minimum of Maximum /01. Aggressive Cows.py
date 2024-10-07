@@ -1,13 +1,11 @@
 """
-Aggressive Cows Problem
+Problem Statement: Aggressive Cows Problem
 
-# related to magnetic force of 2 balls
-
-Problem Statement:
     You are given an array 'arr' consisting of 'n' integers which denote the position of a stall.
     You are also given an integer 'k' which denotes the number of aggressive cows.
     You are given the task of assigning stalls to 'k' cows such that the minimum distance between any two of them is the maximum possible.
-    Print the maximum possible minimum distance.
+    
+    return the maximum possible minimum distance.
 
 Examples:
     Example 1:
@@ -49,36 +47,51 @@ from typing import List
 
 class Solution:
     def can_place_cows(self, stalls: List[int], n: int, cows: int, min_dist: int) -> bool:
+        # Initialize the count of placed cows and the position of the last placed cow
         count = 1
         last_position = stalls[0]
         
+        # Iterate through the stalls
         for i in range(1, n):
+            # If the current stall is far enough from the last placed cow
             if stalls[i] - last_position >= min_dist:
+                # Place a cow here
                 count += 1
                 last_position = stalls[i]
                 
+                # If we've placed all cows, return True
                 if count == cows:
                     return True
         
+        # If we couldn't place all cows, return False
         return False
 
     def aggressiveCows(self, stalls: List[int], k: int) -> int:
         n = len(stalls)
+        # Sort the stalls to ensure we can use the distance effectively
         stalls.sort()
         
+        # Initialize the binary search range
+        # Minimum distance is 0, maximum is the distance between first and last stall
         low = 0
         high = stalls[-1] - stalls[0]
         result = 0
         
+        # Perform binary search
         while low <= high:
+            # Calculate the middle distance
             mid = (low + high) // 2
             
+            # Check if we can place k cows with this minimum distance
             if self.can_place_cows(stalls, n, k, mid):
+                # If yes, this could be our result, but we'll try for a larger distance
                 result = mid
                 low = mid + 1
             else:
+                # If no, we need to try a smaller distance
                 high = mid - 1
         
+        # Return the largest minimum distance we found
         return result
 
 
