@@ -6,14 +6,14 @@ The Celebrity Problem
     find the celebrity in the party. If there is no celebrity, return -1.
 
 Example 1:
-    Input: mat = [[0, 1, 0],
+    Input: mat =    [[0, 1, 0],
                     [0, 0, 0], 
                     [0, 1, 0]]
     Output: 1
     Explanation: Person 1 is known by 0 and 2, but doesn't know anyone. Thus, 1 is the celebrity.
 
 Example 2:
-    Input: mat = [[0, 1],
+    Input: mat =    [[0, 1],
                     [1, 0]]
     Output: -1
     Explanation: Both people know each other. There's no celebrity.

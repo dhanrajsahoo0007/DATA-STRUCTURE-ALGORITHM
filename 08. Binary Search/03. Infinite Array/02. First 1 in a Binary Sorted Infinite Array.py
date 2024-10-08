@@ -1,8 +1,8 @@
 """
 Problem Statement: Index of First 1 in a Binary Sorted Infinite Array
 
-Given an infinite sorted binary array (containing only 0s and 1s), find the index of the first 1 in the array.
-The array is infinite, which means you don't know the size of the array beforehand.
+    Given an infinite sorted binary array (containing only 0s and 1s), find the index of the first 1 in the array.
+    The array is infinite, which means you don't know the size of the array beforehand.
 
 Examples:
 
@@ -22,30 +22,21 @@ The approach uses a combination of exponential search to find a range and then b
 Explanation of the approach:
 
     1. Exponential Search:
-    - We start with a small range and exponentially increase its size.
-    - This allows us to quickly find a range that contains the first 1.
+        - We start with a small range and exponentially increase its size.
+        - This allows us to quickly find a range that contains the first 1.
 
     2. Binary Search for First Occurrence:
-    - Once we have a range, we perform a modified binary search to find the first occurrence of 1.
-    - When we find a 1, we continue searching in the left half to find the first occurrence.
+        - Once we have a range, we perform a modified binary search to find the first occurrence of 1.
+        - When we find a 1, we continue searching in the left half to find the first occurrence.
 
     3. Handling "Infinite" Array:
-    - We use len(arr) in our implementation to avoid index out of range errors.
-    - In a truly infinite array scenario, you would replace len(arr) checks with a method to test if an index is valid.
+        - We use len(arr) in our implementation to avoid index out of range errors.
+        - In a truly infinite array scenario, you would replace len(arr) checks with a method to test if an index is valid.
 """
 
 def binary_search_first_one(arr, left, right):
-    """
-    Perform binary search to find the first occurrence of 1 in the given range of the array.
-    
-    Args:
-    arr (list): The binary array to search in
-    left (int): The left boundary of the search range
-    right (int): The right boundary of the search range
-    
-    Returns:
-    int: The index of the first 1 if found, -1 otherwise
-    """
+    #Perform binary search to find the first occurrence of 1 in the given range of the array.
+
     result = -1
     while left <= right:
         mid = left + (right - left) // 2
@@ -57,15 +48,8 @@ def binary_search_first_one(arr, left, right):
     return result
 
 def find_first_one_infinite_array(arr):
-    """
-    Find the index of the first 1 in an infinite binary sorted array.
-    
-    Args:
-    arr (list): The infinite binary sorted array
-    
-    Returns:
-    int: The index of the first 1 if found, -1 if the array contains only 0s
-    """
+    #Find the index of the first 1 in an infinite binary sorted array.
+
     # Start with a box of size 1
     left, right = 0, 1
     

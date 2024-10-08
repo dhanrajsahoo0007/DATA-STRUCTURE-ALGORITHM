@@ -20,30 +20,19 @@ Examples:
 Explanation of the approach:
 
     1. Exponential Search:
-    - We start with a small range (box) and exponentially increase its size.
-    - This allows us to quickly find a range that potentially contains the target.
+        - We start with a small range (box) and exponentially increase its size.
+        - This allows us to quickly find a range that potentially contains the target.
 
     2. Binary Search:
-    - Once we have a range, we perform a standard binary search within this range.
+     have a range, we perform a standard binary search within this range.
 
     3. Handling "Infinite" Array:
-    - We use len(arr) in our implementation to avoid index out of range errors.
-    - In a truly infinite array scenario, you would replace len(arr) checks with a method to test if an index is valid.
+        - We use len(arr) in our implementation to avoid index out of range errors.
+        - In a truly infinite array scenario, you would replace len(arr) checks with a method to test if an index is valid.
 """
 
 def binary_search(arr, left, right, target):
-    """
-    Perform binary search in the given range of the array.
-    
-    Args:
-    arr (list): The array to search in
-    left (int): The left boundary of the search range
-    right (int): The right boundary of the search range
-    target (int): The element to search for
-    
-    Returns:
-    int: The index of the target element if found, -1 otherwise
-    """
+    # Perform binary search in the given range of the array.
     while left <= right:
         mid = left + (right - left) // 2
         if arr[mid] == target:
@@ -55,16 +44,9 @@ def binary_search(arr, left, right, target):
     return -1
 
 def find_in_infinite_array(arr, target):
-    """
-    Find the position of the target element in an infinite sorted array.
+
+    #Find the position of the target element in an infinite sorted array.
     
-    Args:
-    arr (list): The infinite sorted array
-    target (int): The element to search for
-    
-    Returns:
-    int: The index of the target element if found, -1 otherwise
-    """
     # Start with a box of size 1
     left, right = 0, 1
     
