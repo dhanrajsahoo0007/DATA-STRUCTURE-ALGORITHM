@@ -7,14 +7,14 @@ Implement a Binary Search Tree (BST) with the following operations:
     4. Find the maximum value
 
 A BST is a binary tree where for each node:
-- All nodes in the left subtree have values less than the node's value.
-- All nodes in the right subtree have values greater than the node's value.
+    - All nodes in the left subtree have values less than the node's value.
+    - All nodes in the right subtree have values greater than the node's value.
 
 Time Complexity:
-- Insert: O(h) - where h is the height of the tree
-- Search: O(h)
-- Find Min: O(h)
-- Find Max: O(h)
+    - Insert: O(h) - where h is the height of the tree
+    - Search: O(h)
+    - Find Min: O(h)
+    - Find Max: O(h)
 
 In a balanced BST, h = log(n), where n is the number of nodes, 
 so these operations would be O(log n).
@@ -22,8 +22,8 @@ so these operations would be O(log n).
 In the worst case (skewed tree), h = n, so these operations would be O(n).
 
 Space Complexity:
-- For all operations: O(h) due to the recursive call stack.
-- Overall tree storage: O(n) where n is the number of nodes.
+    - For all operations: O(h) due to the recursive call stack.
+    - Overall tree storage: O(n) where n is the number of nodes.
 
 Example BST:
        5
