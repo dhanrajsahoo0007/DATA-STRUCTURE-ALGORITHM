@@ -1,6 +1,4 @@
-from typing import List 
-
-'''
+"""
 Car Fleet Problem
 
     There are n cars traveling to a target destination. Each car has a starting position and speed.
@@ -50,7 +48,10 @@ Detailed Explanation:
 
     This approach efficiently solves the problem without needing to simulate the actual movement of cars.
     It works because we only need to know if cars will form fleets, not the exact positions where they meet.
-'''
+"""
+
+
+from typing import List 
 class Solution:
     
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:

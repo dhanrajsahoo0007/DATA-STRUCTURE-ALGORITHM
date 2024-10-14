@@ -115,7 +115,7 @@ print(solution.countOfAtoms("H2O"))  # Output: "H2O"
 # Explanation: The count of elements are {'H': 2, 'O': 1}.
 
 # Test case 2: Molecule with parentheses
-print(solution.countOfAtoms("Mg(OH)2"))  # Output: "H2MgO2"
+print(solution.countOfAtoms("Mg(OH)12"))  # Output: "H2MgO2"
 # Explanation: The count of elements are {'H': 2, 'Mg': 1, 'O': 2}.
 
 # Test case 3: Complex molecule with nested parentheses

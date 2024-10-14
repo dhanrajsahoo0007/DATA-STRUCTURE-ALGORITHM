@@ -12,7 +12,7 @@ Constraints:
 Time: O(n).
 Sapce: O(k)
 """
-def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+def maxSlidingWindow(self, nums: list[int], k: int) -> list[int]:
     
     from collections import deque
     # Store the indexes of the elements in the array within the window

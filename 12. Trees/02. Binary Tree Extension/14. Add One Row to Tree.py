@@ -10,7 +10,6 @@ Key Points:
 
     
 Example 1:
-
 Input: root = [4,2,6,3,1,5], val = 1, depth = 2
        4                  4
      /   \              /   \
@@ -21,7 +20,6 @@ Input: root = [4,2,6,3,1,5], val = 1, depth = 2
                   3   1  5
 
 Example 2:
-
 Input: root = [4,2,null,3,1], val = 1, depth = 3
       4                  4
     /                  /

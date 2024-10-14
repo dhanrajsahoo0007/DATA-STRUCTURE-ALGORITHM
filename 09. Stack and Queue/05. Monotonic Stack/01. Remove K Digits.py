@@ -24,7 +24,6 @@ Constraints:
     * num does not have any leading zeros except for the zero itself.
 
 Answer Explanation:
-The solution uses a greedy approach with a string acting as a stack:
     1. We iterate through each digit in the input number.
     2. For each digit, we compare it with the last digit in our result:
         - If the current digit is smaller and we still have removals left (k > 0),
@@ -54,10 +53,12 @@ class Solution:
                 k -= 1
             
             # Add the current digit if it's not a leading zero
+            # to avoid the case when we have preceeding zeros
             if result or digit != '0':
                 result += digit
         
         # If we still have removals left, remove from the end
+        # for case where the numbers are in sorted order like 13456 , no element would have been deleted  
         if k > 0:
             result = result[:-k]
         

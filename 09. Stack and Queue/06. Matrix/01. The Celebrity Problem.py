@@ -31,7 +31,6 @@ class Solution:
     def celebrity(self, mat):
         n = len(mat)
         
-        
         # Step 1: Find a row with all 0s (potential celebrity)
         # Explanation: A celebrity doesn't know anyone, so their row in the matrix should be all 0s.
         potential_celeb = -1

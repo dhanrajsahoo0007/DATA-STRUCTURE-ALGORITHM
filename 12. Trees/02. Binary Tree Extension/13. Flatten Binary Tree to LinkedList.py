@@ -1,36 +1,27 @@
 """
 Problem: Flatten Binary Tree to Linked List
 
-Given the root of a binary tree, flatten the tree into a "linked list":
-- The "linked list" should use the same TreeNode class where the right child pointer points to the next node in the list and the left child pointer is always null.
-- The "linked list" should be in the same order as a pre-order traversal of the binary tree.
+    Given the root of a binary tree, flatten the tree into a "linked list":
+        - The "linked list" should use the same TreeNode class where the right child pointer points to the next node in the list and the left child pointer is always null.
+        - The "linked list" should be in the same order as a pre-order traversal of the binary tree.
 
 Example:
 Input:
-    1
-   / \
+    1                         
+   / \                           
   2   5
  / \   \
 3   4   6
 
 Output:
-1
- \
-  2
-   \
-    3
-     \
-      4
-       \
-        5
-         \
-          6
+
+    1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 Approaches:
-1. Iterative
-2. Recursive
-3. Morris Traversal
-4. Using Stack
+    1. Iterative
+    2. Recursive
+    3. Morris Traversal
+    4. Using Stack
 
 Time Complexity: O(n) for all approaches, where n is the number of nodes in the tree.
 Space Complexity: 
@@ -46,9 +37,9 @@ class TreeNode:
 
 """
 Iterative Approach:
-This method iterates through the tree, rearranging pointers as it goes.
-For each node with a left child, it finds the rightmost node in the left subtree,
-makes it point to the current node's right child, then moves the left subtree to the right.
+    This method iterates through the tree, rearranging pointers as it goes.
+    For each node with a left child, it finds the rightmost node in the left subtree,
+    makes it point to the current node's right child, then moves the left subtree to the right.
 
 Time Complexity: O(n)
 Space Complexity: O(1)
@@ -106,8 +97,8 @@ def flatten_tree_recursive(root):
     flatten_helper(root)
 """
 Stack-based Approach:
-This method uses a stack to perform a pre-order traversal while flattening the tree.
-It pushes nodes onto the stack in reverse order of desired traversal.
+    This method uses a stack to perform a pre-order traversal while flattening the tree.
+    It pushes nodes onto the stack in reverse order of desired traversal.
 
 Time Complexity: O(n)
 Space Complexity: O(n) due to the stack
@@ -139,8 +130,8 @@ def flatten_tree_stack(root):
 
 """
 Morris Traversal Approach:
-This method uses a modification of Morris traversal to flatten the tree in-place.
-It creates temporary links to enable traversal without recursion or a stack.
+    This method uses a modification of Morris traversal to flatten the tree in-place.
+    It creates temporary links to enable traversal without recursion or a stack.
 
 Time Complexity: O(n)
 Space Complexity: O(1)
@@ -151,17 +142,31 @@ def flatten_tree_morris(root):
         if current.left:
             # Find the rightmost node in the left subtree
             predecessor = current.left
+            # Go the at most right element in the left side 
             while predecessor.right:
                 predecessor = predecessor.right
             
             # Create a temporary link and rearrange pointers
+            # predecessor.right = current.right
+            # current.right = current.left
+            # current.left = None
+
+            # 1. Create a temporary link from the predecessor to the current node's right child.
+            #    This allows us to "remember" where to connect the flattened left subtree later.
             predecessor.right = current.right
+            
+            # 2. Move the entire left subtree to be the right child of the current node.
+            #    This is a key step in flattening the tree, as we're essentially rotating
+            #    the left subtree to the right.
             current.right = current.left
+            
+            # 3. Set the left child to None, as in a flattened tree, all left pointers are null.
+            #    This completes the flattening process for the current node.
             current.left = None
+            
         else:
             # If no left child, move to the right
             current = current.right
-
 
 
 # Helper function to create a linked list representation of the flattened tree
