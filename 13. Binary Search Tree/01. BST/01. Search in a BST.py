@@ -1,53 +1,60 @@
-class Node:
+"""
+Problem Statement:
+    Implement a function to search for a value in a Binary Search Tree (BST).
+    A BST is a binary tree where for each node, all values in its left subtree
+    are less than the node's value, and all values in its right subtree are greater.
+
+Time Complexity: O(h), where h is the height of the tree.
+- In the worst case (skewed tree), h = n, where n is the number of nodes.
+- In the best case (balanced tree), h = log(n).
+
+Space Complexity: O(h) for the recursive approach due to the call stack.
+- O(1) for the iterative approach.
+
+"""
+
+class TreeNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
-class BinarySearchTree:
-    def __init__(self):
-        self.root = None
+def search_bst_recursive(root, value):
+    # Base cases: root is None or value is found
+    if root is None or root.value == value:
+        return root
     
-    def insert(self, value):
-        if not self.root:
-            self.root = Node(value)
+    # If value is less than root's value, search in the left subtree
+    if value < root.value:
+        return search_bst_recursive(root.left, value)
+    
+    # If value is greater than root's value, search in the right subtree
+    return search_bst_recursive(root.right, value)
+
+def search_bst_iterative(root, value):
+    current = root
+    while current:
+        if current.value == value:
+            return current
+        elif value < current.value:
+            current = current.left
         else:
-            self._insert_recursive(self.root, value)
-    
-    def _insert_recursive(self, node, value):
-        if value < node.value:
-            if node.left is None:
-                node.left = Node(value)
-            else:
-                self._insert_recursive(node.left, value)
-        else:
-            if node.right is None:
-                node.right = Node(value)
-            else:
-                self._insert_recursive(node.right, value)
-    
-    def search(self, value):
-        return self._search_recursive(self.root, value)
-    
-    def _search_recursive(self, node, value):
-        if node is None or node.value == value:
-            return node
-        
-        if value < node.value:
-            return self._search_recursive(node.left, value)
-        else:
-            return self._search_recursive(node.right, value)
+            current = current.right
+    return None
 
 # Example usage
-bst = BinarySearchTree()
-values = [5, 3, 7, 1, 4, 6, 8]
-for value in values:
-    bst.insert(value)
+if __name__ == "__main__":
+    # Create a sample BST
+    root = TreeNode(4)
+    root.left = TreeNode(2)
+    root.right = TreeNode(7)
+    root.left.left = TreeNode(1)
+    root.left.right = TreeNode(3)
 
-# Search for a value
-search_value = 4
-result = bst.search(search_value)
-if result:
-    print(f"Value {search_value} found in the BST")
-else:
-    print(f"Value {search_value} not found in the BST")
+    # Test recursive search
+    result = search_bst_recursive(root, 3)
+    print("Recursive search result:", result.value if result else "Not found")
+
+    # Test iterative search
+    result = search_bst_iterative(root, 7)
+    print("Iterative search result:", result.value if result else "Not found")

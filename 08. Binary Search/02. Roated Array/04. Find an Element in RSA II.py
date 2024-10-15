@@ -12,10 +12,10 @@ Explanation:
     The array is rotated, and the target value 1 is present in the array.
 
     Approach:
-    1. We can't directly apply binary search due to the presence of duplicates.
-    2. We'll use a modified binary search that handles duplicates and rotation.
-    3. At each step, we'll compare the middle element with the target and the ends of the current subarray.
-    4. If we can't determine which half to search, we'll reduce the search space by one element.
+        1. We can't directly apply binary search due to the presence of duplicates.
+        2. We'll use a modified binary search that handles duplicates and rotation.
+        3. At each step, we'll compare the middle element with the target and the ends of the current subarray.
+        4. If we can't determine which half to search, we'll reduce the search space by one element.
 
 
 Explanation of the algorithm:

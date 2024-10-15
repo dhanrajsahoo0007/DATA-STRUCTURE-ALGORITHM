@@ -1,34 +1,29 @@
 """
+Binary Search Tree (BST) Floor Implementation
+
 Problem Statement:
-Given a Binary Search Tree (BST) and a new node value, insert the new node into the BST.
-A Binary Search Tree is a binary tree where for each node:
-- All nodes in the left subtree have values less than the node's value.
-- All nodes in the right subtree have values greater than the node's value.
-- Both the left and right subtrees are also binary search trees.
+    Given a BST and a value X, find the floor of X in the BST.
+    The floor of X is the largest value in the BST that is smaller than or equal to X.
 
 Time Complexity: O(h), where h is the height of the tree.
-- In the worst case (skewed tree), h can be O(n), where n is the number of nodes.
-- In the average case (balanced tree), h is O(log n).
+    - In a balanced BST, h = log(n), where n is the number of nodes.
+    - In the worst case (skewed tree), h = n.
 
-Space Complexity: O(h) for the recursive call stack.
-- In the worst case, O(n) for a skewed tree.
-- In the average case, O(log n) for a balanced tree.
+Space Complexity: 
+    - O(h) for the recursive approach due to the call stack.
+    - O(1) for the iterative approach.
 
-Initial Binary Search Tree:
-       8
-     /   \
-    4     12
-   / \   /  \
-  2   6 10  14
+Explanation:
+    The algorithm works by traversing the BST while keeping track of the potential floor value.
+    - If the current node's value is equal to X, we've found the exact floor.
+    - If X is less than the current node's value, we move to the left subtree.
+    - If X is greater than the current node's value, we update our potential floor and move to the right subtree.
 
-Binary Search Tree after inserting 5:
-       8
-     /   \
-    4     12
-   / \   /  \
-  2   6 10  14
-     /
-    5
+         8
+       /   \
+      4    12
+     / \   / \
+    2   6 10 14
 """
 
 class TreeNode:
@@ -37,20 +32,40 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def insert(root, value):
-    if root is None:
-        return TreeNode(value)
+def find_floor_recursive(root, x):
+    def floor_helper(node, x, floor):
+        if node is None:
+            return floor
+        
+        if node.value == x:
+            return node.value
+        
+        if node.value > x:
+            return floor_helper(node.left, x, floor)
+        
+        return floor_helper(node.right, x, node.value)
     
-    if value < root.value:
-        root.left = insert(root.left, value)
-    else:
-        root.right = insert(root.right, value)
+    return floor_helper(root, x, None)
+
+def find_floor_iterative(root, x):
+    floor = None
+    current = root
     
-    return root
+    while current:
+        if current.value == x:
+            return current.value
+        
+        if current.value > x:
+            current = current.left
+        else:
+            floor = current.value
+            current = current.right
+    
+    return floor
 
 # Example usage
 if __name__ == "__main__":
-    # Create the initial tree
+    # Create a sample BST
     root = TreeNode(8)
     root.left = TreeNode(4)
     root.right = TreeNode(12)
@@ -59,8 +74,16 @@ if __name__ == "__main__":
     root.right.left = TreeNode(10)
     root.right.right = TreeNode(14)
 
-    # Insert a new node with value 5
-    new_value = 5
-    root = insert(root, new_value)
 
-    print(f"New value {new_value} has been inserted into the BST.")
+    # Test cases
+    test_values = [5, 11, 1, 15, 7]
+    
+    print("Recursive approach:")
+    for value in test_values:
+        floor = find_floor_recursive(root, value)
+        print(f"Floor of {value}: {floor}")
+    
+    print("\nIterative approach:")
+    for value in test_values:
+        floor = find_floor_iterative(root, value)
+        print(f"Floor of {value}: {floor}")

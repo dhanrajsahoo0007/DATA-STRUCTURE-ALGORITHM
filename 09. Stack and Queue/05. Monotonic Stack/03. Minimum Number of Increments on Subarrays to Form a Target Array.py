@@ -1,8 +1,32 @@
 """
-Problem Statement:
-Given an integer array target, you have an initial array of the same size with all elements initially zeros.
-In one operation, you can choose any subarray from initial and increment each value by one.
-Return the minimum number of operations to form the target array from initial.
+Problem Statement: Minimum Number of Increments on Subarrays to Form a Target Array
+
+    Given an integer array target, you have an initial array of the same size with all elements initially zeros.
+    In one operation, you can choose any subarray from initial and increment each value by one.
+    Return the minimum number of operations to form the target array from initial.
+
+Example 1:
+
+    Input: target = [1,2,3,2,1]
+    Output: 3
+    Explanation: We need at least 3 operations to form the target array from the initial array.
+                [0,0,0,0,0] increment 1 from index 0 to 4 (inclusive).
+                [1,1,1,1,1] increment 1 from index 1 to 3 (inclusive).
+                [1,2,2,2,1] increment 1 at index 2.
+                [1,2,3,2,1] target array is formed.
+
+Example 2:
+
+    Input: target = [3,1,1,2]
+    Output: 4
+    Explanation: [0,0,0,0] -> [1,1,1,1] -> [1,1,1,2] -> [2,1,1,2] -> [3,1,1,2]
+
+Example 3:
+
+    Input: target = [3,1,5,4,2]
+    Output: 7
+    Explanation: [0,0,0,0,0] -> [1,1,1,1,1] -> [2,1,1,1,1] -> [3,1,1,1,1] -> [3,1,2,2,2] -> [3,1,3,3,2] -> [3,1,4,4,2] -> [3,1,5,4,2].
+
 
 Time Complexity: O(n), where n is the length of the target array.
     - We iterate through the array once.
@@ -18,11 +42,13 @@ The key insight to solve this problem efficiently is to realize that we only nee
 
     2. Observation: To reach any element in the target array, we need to perform at least as many operations as the value of that element.
 
-    3. Optimization: However, we don't always need to start from zero for each element. If the current element is smaller than or equal to the previous element, we don't need any additional operations for it.
+    3. Optimization: However, we don't always need to start from zero for each element. 
+        If the current element is smaller than or equal to the previous element, we don't need any additional operations for it.
 
     4. Key Point: We only need additional operations when the current element is greater than the previous element.
 
 Algorithm:
+
 1. Initialize the number of operations with the first element of the target array.
    This is because we always need at least this many operations to reach the first element.
 
