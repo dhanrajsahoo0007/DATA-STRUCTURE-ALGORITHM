@@ -1,14 +1,16 @@
-# Let's break down this recursive sorting solution:
+"""
+The main function merge_sort:
+    Base case: If the array has 1 or fewer elements, it's already sorted, so we return it.
+    Recursive case:
+        We divide the array into two halves.
+        We recursively call merge_sort on both halves.
+        We merge the sorted halves using the merge function.
 
-# The main function merge_sort:
-    # Base case: If the array has 1 or fewer elements, it's already sorted, so we return it.
-    # Recursive case:
-        # We divide the array into two halves.
-        # We recursively call merge_sort on both halves.
-        # We merge the sorted halves using the merge function.
+Time complexity: O(n log n) in all cases
+Space complexity: O(n) for the temporary arrays in the merge step
 
-# Time complexity: O(n log n) in all cases
-# Space complexity: O(n) for the temporary arrays in the merge step
+"""
+
 
 
 def merge_sort(arr):
@@ -28,11 +30,13 @@ def merge_sort(arr):
     # Merge the sorted halves
     return merge(left_half, right_half)
 
+"""
+The merge function:
+    This function takes two sorted arrays and merges them into a single sorted array.
+    It compares elements from both arrays and adds the smaller one to the result.
+    After one array is exhausted, it adds any remaining elements from the other array.
+"""
 
-# The merge function:
-    # This function takes two sorted arrays and merges them into a single sorted array.
-    # It compares elements from both arrays and adds the smaller one to the result.
-    # After one array is exhausted, it adds any remaining elements from the other array.
 def merge(left, right):
     result = []
     left_index, right_index = 0, 0
