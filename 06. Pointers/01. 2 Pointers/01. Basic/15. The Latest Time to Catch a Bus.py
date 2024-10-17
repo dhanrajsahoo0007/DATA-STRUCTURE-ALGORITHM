@@ -30,6 +30,43 @@ class Solution:
         
         return latest_time
 
+
+class Solution:
+    def latestTimeCatchTheBus(self, buses: List[int], passengers: List[int], capacity: int) -> int:
+        """
+        Find the last time you can come but also get onto the bus
+        Sort the buses array and passengers array.
+
+        Now consider a bus departing at time t1 so as passengers array is also sorted just iterate over passengers array and look which all passengers can travel by this bus. Suppose a passenger arriving at time t2 can travel by this bus , then t2-1 can be a possible answer , if and only if there is not any passenger arriving at t2-1.
+
+        Now , there can be a condition that there are less passengers than the capacity which can travel by the bus departing at t1.
+        For ex - bus departs at t=10 and has capacity 2
+        but there is only 1 passenger to travel. So departure time of the bus can be a possible answer.
+        But what if that 1 passenger has arrival time equal to departure time of the bus then departure time cannot be our answer.
+        """
+        buses.sort()
+        passengers.sort()
+
+        num_buses = len(buses)
+        num_passengers = len(passengers)
+        b,p = 0,0
+        prev = -1
+        ans = 0
+
+        for current_bus_departure in buses:
+            current_bus_capacity = 0
+            while p < num_passengers and passengers[p] <= current_bus_departure and current_bus_capacity < capacity:
+                if passengers[p]-1 != prev:
+                    ans = passengers[p]-1
+                prev = passengers[p]
+                p += 1
+                current_bus_capacity += 1
+            if (current_bus_capacity < capacity and prev != current_bus_departure):
+                ans = current_bus_departure
+        return ans
+
+
+
 # Test the solution
 if __name__ == "__main__":
     sol = Solution()
